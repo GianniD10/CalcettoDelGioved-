@@ -59,9 +59,12 @@
         }
 
         .menu {
-            text-align: center;
-            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
         }
+
 
         .menu button {
             padding: 12px 25px;
@@ -405,12 +408,17 @@
         }
 
         .ranking-list li {
-            padding: 10px 15px;
-            border-bottom: 1px solid #ecf0f1;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 20px; /* spazio tra nome e punteggio */
+            font-size: 0.95rem;
+            padding: 8px 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
+
 
         .ranking-list li:last-child {
             border-bottom: none;
@@ -451,35 +459,76 @@
             border: 1px solid #bdc3c7;
         }
 
-        /* Media query per schermi più piccoli */
         @media (max-width: 768px) {
             .container {
-                padding: 15px;
+                padding: 10px;
             }
 
             h1 {
-                font-size: 2rem;
-                margin-bottom: 20px;
+                font-size: 1.8rem;
+                margin-bottom: 15px;
             }
 
             .main-content {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 15px;
             }
 
-            .team-section {
-                position: static; /* Rimuove sticky */
+            .players-section, .team-section, .rankings-section {
+                padding: 15px;
             }
 
-            .action-buttons {
+            .menu button {
+                margin: 5px 5px;
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+
+            .player-card {
                 flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .player-cost {
+                margin-top: 8px;
+            }
+
+            .team-list {
+                min-height: auto;
+            }
+
+            .selected-player {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .ranking-list li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .ranking-type-selection,
+            .rankings-container {
+                font-size: 0.9rem;
+            }
+
+            #sort-by, #ranking-type {
+                width: 100%;
+                margin-top: 10px;
             }
 
             .btn {
-                padding: 12px 20px;
-                font-size: 0.9rem;
+                font-size: 0.85rem;
+                padding: 10px;
+            }
+
+            footer {
+                font-size: 0.85rem;
             }
         }
+
 
         /* Stile per il footer */
         footer {
