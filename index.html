@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fantasy Calcio a 5</title>
     <style>
+        /* Stili CSS (come fornito in precedenza, con aggiunte) */
         * {
             margin: 0;
             padding: 0;
@@ -344,15 +345,15 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-            
+
             .container {
                 padding: 20px;
             }
-            
+
             h1 {
                 font-size: 2rem;
             }
-            
+
             .action-buttons {
                 flex-direction: column;
             }
@@ -379,41 +380,170 @@
         .notification.error {
             background: #e74c3c;
         }
+
+        /* Stili per le classifiche */
+        .rankings-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            margin-top: 20px;
+        }
+
+        .rankings-section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .ranking-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ranking-list li {
+            padding: 10px 15px;
+            border-bottom: 1px solid #ecf0f1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ranking-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Style for the media selection dropdown */
+        #sort-by {
+            margin-left: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #bdc3c7;
+        }
+
+        /* Styles for the menu */
+        .menu {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .menu button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Style for the ranking section */
+        .rankings-section {
+            display: none; /* Hidden by default */
+        }
+
+        /* Style to show the ranking section */
+        .rankings-section.active {
+            display: block;
+        }
+
+        /* Styles for the ranking type selection */
+        .ranking-type-selection {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .ranking-type-selection label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .ranking-type-selection select {
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #bdc3c7;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>⚽ Fantasy Calcio a 5</h1>
-        
-        <div class="main-content">
-            <div class="players-section">
-                <h2>👥 Giocatori Disponibili</h2>
-                <div id="playersList"></div>
+
+        <div class="menu">
+            <button onclick="showSection('teamBuilder')">Team Builder</button>
+            <button onclick="showSection('rankings')">Classifiche</button>
+        </div>
+
+        <div id="teamBuilder" class="section">
+            <div class="main-content">
+                <div class="players-section">
+                    <h2>👥 Giocatori Disponibili</h2>
+                    <div id="playersList"></div>
+                </div>
+
+                <div class="team-section">
+                    <div class="budget-info">
+                        <h3>💰 Budget Rimanente</h3>
+                        <div class="budget-display"><span id="remainingBudget">25</span> crediti</div>
+                    </div>
+
+                    <div class="team-list">
+                        <h3>🏆 La Tua Squadra (<span id="teamCount">0</span>/5)</h3>
+                        <div id="selectedPlayers"></div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-reset" onclick="resetTeam()">🔄 Reset</button>
+                        <button class="btn btn-save" id="saveBtn" onclick="saveTeamImage()" disabled>💾 Salva Immagine</button>
+                    </div>
+                </div>
             </div>
-            
-            <div class="team-section">
-                <div class="budget-info">
-                    <h3>💰 Budget Rimanente</h3>
-                    <div class="budget-display"><span id="remainingBudget">25</span> crediti</div>
-                </div>
-                
-                <div class="team-list">
-                    <h3>🏆 La Tua Squadra (<span id="teamCount">0</span>/5)</h3>
-                    <div id="selectedPlayers"></div>
-                </div>
-                
-                <div class="action-buttons">
-                    <button class="btn btn-reset" onclick="resetTeam()">🔄 Reset</button>
-                    <button class="btn btn-save" id="saveBtn" onclick="saveTeamImage()" disabled>💾 Salva Immagine</button>
+
+            <div class="team-image" id="teamImage">
+                <h2>🏆 LA MIA SQUADRA</h2>
+                <div class="formation" id="formation"></div>
+                <div class="total-cost">
+                    Costo Totale: <span id="totalCostDisplay">0</span> crediti
                 </div>
             </div>
         </div>
-        
-        <div class="team-image" id="teamImage">
-            <h2>🏆 LA MIA SQUADRA</h2>
-            <div class="formation" id="formation"></div>
-            <div class="total-cost">
-                Costo Totale: <span id="totalCostDisplay">0</span> crediti
+
+        <div id="rankings" class="rankings-section section">
+            <h2>🏆 Classifiche</h2>
+
+            <div class="ranking-type-selection">
+                <label for="ranking-type">Tipo di Classifica:</label>
+                <select id="ranking-type" onchange="renderRankings()">
+                    <option value="weekly">Settimanale</option>
+                    <option value="global">Globale</option>
+                </select>
+            </div>
+
+            <div class="rankings-container">
+                <!-- Classifica Squadre -->
+                <div class="team-rankings">
+                    <h3>Classifica Squadre</h3>
+                    <ul class="ranking-list" id="teamRankingList"></ul>
+                </div>
+<br> <br>
+                <!-- Classifica Giocatori -->
+                <div class="player-rankings">
+                    <h3>Classifica Giocatori</h3> <br>
+                    <label for="sort-by">Ordina per:</label>
+                    <select id="sort-by" onchange="sortPlayersRanking()">
+                        <option value="points">Punteggio</option>
+                        <option value="average">Media</option>
+                    </select>
+                    <ul class="ranking-list" id="playerRankingList"></ul>
+                </div>
             </div>
         </div>
     </div>
@@ -422,6 +552,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
+        // Dati dei giocatori
         const players = [
             { name: "Luigi Pedone", cost: 9 },
             { name: "Gianni Destino", cost: 8 },
@@ -437,13 +568,88 @@
             { name: "Luca 'Bob' Del Vento", cost: 2 }
         ];
 
+        // Dati delle Classifiche (iniziali)
+        const weeklyTeamRankingData = [
+            { name: "PEDONE", score: 14 },
+            { name: "DI NICOLI", score: 13.5 },
+            { name: "DI MURO", score: 13.5 },
+            { name: "IACOBONE", score: 13.5 },
+            { name: "MATARRESE", score: 13 },
+            { name: "PALERMO", score: 13 },
+            { name: "DESTINO", score: 11.5 },
+            { name: "BARBAROSSA", score: 11.5 },
+            { name: "ACQUAVIVA", score: 10.5 },
+            { name: "DEL VENTO", score: 10 },
+            { name: "PATRUNO", score: 8.5 }
+        ];
+
+        const globalTeamRankingData = [
+            { name: "PEDONE", score: 14 },
+            { name: "DI NICOLI", score: 13.5 },
+            { name: "DI MURO", score: 13.5 },
+            { name: "IACOBONE", score: 13.5 },
+            { name: "MATARRESE", score: 13 },
+            { name: "PALERMO", score: 13 },
+            { name: "DESTINO", score: 11.5 },
+            { name: "BARBAROSSA", score: 11.5 },
+            { name: "ACQUAVIVA", score: 10.5 },
+            { name: "DEL VENTO", score: 10 },
+            { name: "PATRUNO", score: 8.5 }
+        ];
+
+        const weeklyPlayerRankingData = [
+            { name: "Luigi Pedone", score: 19.0, matches: 4 },
+            { name: "Gianni Destino", score: 18.5, matches: 4 },
+            { name: "Giuseppe Acquaviva", score: 12.0, matches: 4 },
+            { name: "Francesco Pio Matarrese", score: 12.0, matches: 3 },
+            { name: "Mariano Di Nicoli", score: 9.0, matches: 4 },
+            { name: "Domenico Patruno", score: 7.5, matches: 4 },
+            { name: "Simone Palermo", score: 4.5, matches: 3 },
+            { name: "Luca Di Muro", score: 4.5, matches: 4 },
+            { name: "Leo Acquaviva", score: 2.0, matches: 1 },
+            { name: "Biagio Barbarossa", score: 1.5, matches: 1 },
+            { name: "Nicola Iacobone", score: 1.5, matches: 3 },
+            { name: "Luca Di Fazio", score: 1.0, matches: 1 },
+            { name: "Luca Del Vento", score: -0.5, matches: 4 }
+        ];
+
+        const globalPlayerRankingData = [
+            { name: "Luigi Pedone", score: 19.0, matches: 4 },
+            { name: "Gianni Destino", score: 18.5, matches: 4 },
+            { name: "Giuseppe Acquaviva", score: 12.0, matches: 4 },
+            { name: "Francesco Pio Matarrese", score: 12.0, matches: 3 },
+            { name: "Mariano Di Nicoli", score: 9.0, matches: 4 },
+            { name: "Domenico Patruno", score: 7.5, matches: 4 },
+            { name: "Simone Palermo", score: 4.5, matches: 3 },
+            { name: "Luca Di Muro", score: 4.5, matches: 4 },
+            { name: "Leo Acquaviva", score: 2.0, matches: 1 },
+            { name: "Biagio Barbarossa", score: 1.5, matches: 1 },
+            { name: "Nicola Iacobone", score: 1.5, matches: 3 },
+            { name: "Luca Di Fazio", score: 1.0, matches: 1 },
+            { name: "Luca Del Vento", score: -0.5, matches: 4 }
+        ];
+
+        // Variabili di stato
         let selectedPlayers = [];
         let remainingBudget = 25;
 
+        // Funzioni di utilità
         function getInitials(name) {
             return name.split(' ').map(word => word[0]).join('').toUpperCase();
         }
 
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Funzioni per la gestione della squadra
         function renderPlayers() {
             const playersList = document.getElementById('playersList');
             playersList.innerHTML = '';
@@ -471,7 +677,7 @@
 
         function togglePlayer(player) {
             const isSelected = selectedPlayers.some(p => p.name === player.name);
-            
+
             if (isSelected) {
                 selectedPlayers = selectedPlayers.filter(p => p.name !== player.name);
                 remainingBudget += player.cost;
@@ -489,17 +695,6 @@
             }
 
             updateUI();
-        }
-
-        function updateUI() {
-            document.getElementById('remainingBudget').textContent = remainingBudget;
-            document.getElementById('teamCount').textContent = selectedPlayers.length;
-            
-            const saveBtn = document.getElementById('saveBtn');
-            saveBtn.disabled = selectedPlayers.length !== 5;
-
-            renderPlayers();
-            renderSelectedPlayers();
         }
 
         function renderSelectedPlayers() {
@@ -529,6 +724,17 @@
             showNotification('Squadra resettata!');
         }
 
+        function updateUI() {
+            document.getElementById('remainingBudget').textContent = remainingBudget;
+            document.getElementById('teamCount').textContent = selectedPlayers.length;
+
+            const saveBtn = document.getElementById('saveBtn');
+            saveBtn.disabled = selectedPlayers.length !== 5;
+
+            renderPlayers();
+            renderSelectedPlayers();
+        }
+
         function saveTeamImage() {
             if (selectedPlayers.length !== 5) {
                 showNotification('Devi selezionare esattamente 5 giocatori!', 'error');
@@ -537,10 +743,10 @@
 
             const teamImage = document.getElementById('teamImage');
             const formation = document.getElementById('formation');
-            
+
             // Crea la formazione 2-1-1-1 (portiere - difensori - centrocampista - attaccante)
             formation.innerHTML = '';
-            
+
             const positions = [
                 { label: 'ATTACCANTE', players: 1 },
                 { label: 'CENTROCAMPISTA', players: 1 },
@@ -552,11 +758,11 @@
             positions.forEach(position => {
                 const row = document.createElement('div');
                 row.className = 'position-row';
-                
+
                 for (let i = 0; i < position.players; i++) {
                     const slot = document.createElement('div');
                     slot.className = 'player-slot';
-                    
+
                     if (playerIndex < selectedPlayers.length) {
                         const player = selectedPlayers[playerIndex];
                         slot.innerHTML = `
@@ -567,10 +773,10 @@
                     } else {
                         slot.innerHTML = `<div class="player-name">${position.label}</div>`;
                     }
-                    
+
                     row.appendChild(slot);
                 }
-                
+
                 formation.appendChild(row);
             });
 
@@ -601,21 +807,21 @@
                     // Crea un canvas ottimizzato per mobile
                     const optimizedCanvas = document.createElement('canvas');
                     const ctx = optimizedCanvas.getContext('2d');
-                    
+
                     // Dimensioni ottimali per mobile (16:10 ratio)
                     optimizedCanvas.width = 800;
                     optimizedCanvas.height = 1000;
-                    
+
                     // Disegna l'immagine catturata sul canvas ottimizzato
                     ctx.fillStyle = '#667eea';
                     ctx.fillRect(0, 0, 800, 1000);
                     ctx.drawImage(canvas, 0, 0, 800, 1000);
-                    
+
                     // Scarica l'immagine ottimizzata
                     const link = document.createElement('a');
                     link.download = 'la_mia_squadra_calcio5.png';
                     link.href = optimizedCanvas.toDataURL('image/png', 1.0);
-                    
+
                     // Per mobile, usa un approccio diverso
                     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
                         // Apri in una nuova finestra per mobile
@@ -628,14 +834,14 @@
                                     <style>
                                         body { margin: 0; padding: 20px; text-align: center; background: #f0f0f0; }
                                         img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-                                        .download-btn { 
-                                            display: inline-block; 
-                                            margin-top: 20px; 
-                                            padding: 15px 30px; 
-                                            background: #3498db; 
-                                            color: white; 
-                                            text-decoration: none; 
-                                            border-radius: 10px; 
+                                        .download-btn {
+                                            display: inline-block;
+                                            margin-top: 20px;
+                                            padding: 15px 30px;
+                                            background: #3498db;
+                                            color: white;
+                                            text-decoration: none;
+                                            border-radius: 10px;
                                             font-weight: bold;
                                         }
                                     </style>
@@ -657,7 +863,7 @@
                         // Desktop: download diretto
                         link.click();
                     }
-                    
+
                     teamImage.style.display = 'none';
                     showNotification('Immagine creata con successo! 🎉');
                 }).catch(err => {
@@ -668,19 +874,68 @@
             }, 500);
         }
 
-        function showNotification(message, type = 'success') {
-            const notification = document.getElementById('notification');
-            notification.textContent = message;
-            notification.className = `notification ${type}`;
-            notification.classList.add('show');
+        // Funzioni per la gestione delle classifiche
+        function renderTeamRanking(rankingType = 'weekly') {
+            const teamRankingList = document.getElementById('teamRankingList');
+            teamRankingList.innerHTML = '';
 
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
+            const rankingData = (rankingType === 'weekly') ? weeklyTeamRankingData : globalTeamRankingData;
+
+            rankingData.forEach(team => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<span>${team.name}</span><span>${team.score}</span>`;
+                teamRankingList.appendChild(listItem);
+            });
         }
 
-        // Inizializza l'app
-        updateUI();
+        function renderPlayerRanking(sortBy = 'points', rankingType = 'weekly') {
+            const playerRankingList = document.getElementById('playerRankingList');
+            playerRankingList.innerHTML = '';
+
+             const rankingData = (rankingType === 'weekly') ? weeklyPlayerRankingData : globalPlayerRankingData;
+
+            let sortedPlayers = [...rankingData];
+            if (sortBy === 'points') {
+                sortedPlayers.sort((a, b) => b.score - a.score);
+            } else if (sortBy === 'average') {
+                sortedPlayers.sort((a, b) => (b.score / b.matches) - (a.score / a.matches));
+            }
+
+            sortedPlayers.forEach(player => {
+                const listItem = document.createElement('li');
+                const average = (player.score / player.matches).toFixed(2);
+                listItem.innerHTML = `<span>${player.name}</span><span>${player.score} (${player.matches} partite, Media: ${average})</span>`;
+                playerRankingList.appendChild(listItem);
+            });
+        }
+
+        function sortPlayersRanking() {
+            const sortBy = document.getElementById('sort-by').value;
+             const rankingType = document.getElementById('ranking-type').value;
+            renderPlayerRanking(sortBy,rankingType);
+        }
+
+        function renderRankings() {
+            const rankingType = document.getElementById('ranking-type').value;
+            renderTeamRanking(rankingType);
+            renderPlayerRanking('points', rankingType); // Default ordinamento per punti
+        }
+
+        // Funzione per mostrare/nascondere le sezioni
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.style.display = 'none');
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // Inizializzazione
+        window.onload = function() {
+            renderPlayers();
+            renderSelectedPlayers();
+            renderRankings();
+            showSection('teamBuilder'); // Mostra la sezione "Team Builder" di default
+        };
+
     </script>
 </body>
 </html>
