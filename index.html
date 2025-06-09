@@ -1282,52 +1282,69 @@
                     // Usa il nome scelto dall'utente per il file
                     const fileName = teamName.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '_calcio5.png';
 
+                    // Crea il link per il download
                     const link = document.createElement('a');
                     link.download = fileName;
-                    link.href = optimizedCanvas.toDataURL('image/png', 1.0);
+                    link.href = optimizedCanvas.toDataURL('image/png', 0.9);
 
-                    // Per mobile, usa un approccio diverso
-                    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                        // Apri in una nuova finestra per mobile
-                        const newWindow = window.open('', '_blank');
-                        newWindow.document.write(`
-                            <html>
-                                <head>
-                                    <title>${teamName}</title>
-                                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                    <style>
-                                        body { margin: 0; padding: 20px; text-align: center; background-color: #f0f4f8; }
-                                        h2 { color: #2c3e50; }
-                                        img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-                                        .download-btn {
-                                            display: inline-block;
-                                            margin-top: 20px;
-                                            padding: 15px 30px;
-                                            background: #3498db;
-                                            color: white;
-                                            text-decoration: none;
-                                            border-radius: 10px;
-                                            font-weight: bold;
-                                        }
-                                    </style>
-                                </head>
-                                <body>
-                                    <h2>🏆 ${teamName} è Pronta!</h2>
-                                    <img src="${optimizedCanvas.toDataURL('image/png', 1.0)}" alt="${teamName}">
-                                    <br>
-                                    <a href="${optimizedCanvas.toDataURL('image/png', 1.0)}" download="${fileName}" class="download-btn">
-                                        📱 Salva Immagine
-                                    </a>
-                                    <p style="margin-top: 20px; color: #666;">
-                                        Tieni premuto sull'immagine e seleziona "Salva immagine" dal menu
-                                    </p>
-                                </body>
-                            </html>
-                        `);
-                    } else {
-                        // Desktop: download diretto
-                        link.click();
-                    }
+                    // Prova prima il download diretto
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+
+                    // Fallback per mobile: mostra l'immagine in una nuova scheda
+                    setTimeout(() => {
+                        try {
+                            const dataURL = optimizedCanvas.toDataURL('image/png', 0.9);
+                            const newTab = window.open();
+                            if (newTab) {
+                                newTab.document.write(`
+                                    <html>
+                                        <head>
+                                            <title>Team ${teamName}</title>
+                                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                            <style>
+                                                body { 
+                                                    margin: 0; 
+                                                    padding: 10px; 
+                                                    background: #f0f4f8; 
+                                                    text-align: center;
+                                                    font-family: Arial, sans-serif;
+                                                }
+                                                img { 
+                                                    max-width: 100%; 
+                                                    height: auto; 
+                                                    border-radius: 10px; 
+                                                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                                                    margin: 10px 0;
+                                                }
+                                                .info {
+                                                    color: #666;
+                                                    font-size: 14px;
+                                                    margin: 15px 0;
+                                                    padding: 10px;
+                                                    background: white;
+                                                    border-radius: 8px;
+                                                }
+                                            </style>
+                                        </head>
+                                        <body>
+                                            <h2>🏆 Team ${teamName}</h2>
+                                            <img src="${dataURL}" alt="Team ${teamName}">
+                                            <div class="info">
+                                                📱 Su mobile: tieni premuto sull'immagine e seleziona "Salva immagine"<br>
+                                                💻 Su desktop: fai click destro e "Salva immagine con nome"
+                                            </div>
+                                        </body>
+                                    </html>
+                                `);
+                                newTab.document.close();
+                            }
+                        } catch (error) {
+                            console.error('Errore nel creare la nuova scheda:', error);
+                            alert('Immagine creata! Prova a fare uno screenshot della formazione.');
+                        }
+                    }, 100);
 
                     teamImage.style.display = 'none';
                     showNotification(`Immagine di "${teamName}" creata con successo! 🎉`);
