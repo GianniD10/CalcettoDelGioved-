@@ -1,12 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fantasy Calcio a 5</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fantasy Calcio a 5</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Oswald:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
         /* Resetta gli stili predefiniti */
         *, *::before, *::after {
             margin: 0;
@@ -545,13 +547,13 @@
             font-weight: 700;
             position: relative;
             z-index: 2;
-            
+
             /* Rimuovo completamente l'effetto dorato */
             color: #ffffff;
-            text-shadow: 
+            text-shadow:
                 0 2px 4px rgba(0, 0, 0, 0.8),
                 0 4px 8px rgba(0, 0, 0, 0.4);
-            
+
             /* Stile elegante e pulito */
             padding: 12px 20px;
             border-radius: 15px;
@@ -630,8 +632,6 @@
             text-align: center;
         }
 
-
-
         .player-slot .player-cost {
             font-size: 0.75rem;
             background: rgba(255, 255, 255, 0.3);
@@ -657,7 +657,6 @@
             z-index: 2;
             position: relative;
         }
-
 
         /* Notifiche migliorate */
         .notification {
@@ -897,104 +896,135 @@
         * {
             transition: var(--transition-fast);
         }
-    </style>
+
+        /* Aggiunti stili per la tabella delle caratteristiche */
+        .player-characteristics {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+    
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+}
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #999;
+}
+.close-button:hover {
+    color: #000;
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Fantasy Calcio a 5</h1>
-
-        <div class="menu">
-            <button onclick="showSection('teamBuilder')">🏗️ Team Builder</button>
-            <button onclick="showSection('rankings')">🏆 Classifiche</button>
-        </div>
-
-        <div id="teamBuilder" class="section">
-            <div class="main-content">
-                <div class="players-section">
-                    <h2>👥 Giocatori Disponibili</h2>
-                    <div id="playersList"></div>
-                </div>
-
-                <div class="team-section">
-                    <div class="budget-info">
-                        <h3>💰 Budget Rimanente</h3>
-                        <div class="budget-display"><span id="remainingBudget">25</span> crediti</div>
-                    </div>
-
-                    <div class="team-list">
-                    <h3>🏆 La Tua Squadra <span style="white-space: nowrap;">(<span id="teamCount">0</span>/5)</span></h3>
-                        <div id="selectedPlayers"></div>
-                    </div>
-
-                    <div class="action-buttons">
-                        <button class="btn btn-reset"
-                         onclick="resetTeam()">🔄 Reset</button>
-                        <button class="btn btn-save" id="saveBtn" onclick="saveTeamImage()" disabled>💾 Salva Immagine</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="team-image" id="teamImage">
-                <h2>🏆 LA MIA SQUADRA</h2>
-                <div class="formation" id="formation"></div>
-                <div class="total-cost">
+<div class="container">
+<h1>Fantasy Calcio a 5</h1>
+<div class="menu">
+<button onclick="showSection('teamBuilder')">🏗️ Team Builder</button>
+<button onclick="showSection('rankings')">🏆 Classifiche</button>
+</div>
+<div class="section" id="teamBuilder">
+<div class="main-content">
+<div class="players-section">
+<h2>👥 Giocatori Disponibili</h2>
+<div id="playersList"></div>
+</div>
+<div class="team-section">
+<div class="budget-info">
+<h3>💰 Budget Rimanente</h3>
+<div class="budget-display"><span id="remainingBudget">25</span> crediti</div>
+</div>
+<div class="team-list">
+<h3>🏆 La Tua Squadra <span style="white-space: nowrap;">(<span id="teamCount">0</span>/5)</span></h3>
+<div id="selectedPlayers"></div>
+</div>
+<div class="action-buttons">
+<button class="btn btn-reset" onclick="resetTeam()">🔄 Reset</button>
+<button class="btn btn-save" disabled="" id="saveBtn" onclick="saveTeamImage()">💾 Salva Immagine</button>
+</div>
+</div>
+</div>
+<div class="team-image" id="teamImage">
+<h2>🏆 LA MIA SQUADRA</h2>
+<div class="formation" id="formation"></div>
+<div class="total-cost">
                     Costo Totale: <span id="totalCostDisplay">0</span> crediti
                 </div>
-            </div>
-        </div>
-
-        <div id="rankings" class="rankings-section section">
-            <h2>🏆 Classifiche</h2>
-
-            <div class="ranking-type-selection">
-                <label for="ranking-type">Tipo di Classifica:</label>
-                <select id="ranking-type" onchange="renderRankings()">
-                    <option value="weekly">📅 Settimanale</option>
-                    <option value="global">🌍 Globale</option>
-                </select>
-            </div>
-
-            <div class="rankings-container">
-                <div class="team-rankings">
-                    <h3>🏅 Classifica Squadre</h3>
-                    <ul class="ranking-list" id="teamRankingList"></ul>
-                </div>
-                <br><br>
-                <div class="player-rankings">
-                    <h3>⭐ Classifica Giocatori</h3>
-                    <label for="sort-by">Ordina per:</label>
-                    <select id="sort-by" onchange="sortPlayersRanking()">
-                        <option value="points">🎯 Punteggio</option>
-                        <option value="average">📊 Media</option>
-                    </select>
-                    <ul class="ranking-list" id="playerRankingList"></ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="notification" id="notification"></div>
-
-    <footer>
-        &copy; 2025 Fantasy Calcio a 5 - Bob Difensore 7 ⚽
+</div>
+</div>
+<div class="rankings-section section" id="rankings">
+<h2>🏆 Classifiche</h2>
+<div class="ranking-type-selection">
+<label for="ranking-type">Tipo di Classifica:</label>
+<select id="ranking-type" onchange="renderRankings()">
+<option value="weekly">📅 Settimanale</option>
+<option value="global">🌍 Globale</option>
+</select>
+</div>
+<div class="rankings-container">
+<div class="team-rankings">
+<h3>🏅 Classifica Squadre</h3>
+<ul class="ranking-list" id="teamRankingList"></ul>
+</div>
+<br/><br/>
+<div class="player-rankings">
+<h3>⭐ Classifica Giocatori</h3>
+<label for="sort-by">Ordina per:</label>
+<select id="sort-by" onchange="sortPlayersRanking()">
+<option value="points">🎯 Punteggio</option>
+<option value="average">📊 Media</option>
+</select>
+<ul class="ranking-list" id="playerRankingList"></ul>
+</div>
+</div>
+</div>
+</div>
+<div class="notification" id="notification"></div>
+<footer>
+        © 2025 Fantasy Calcio a 5 - Bob Difensore 7 ⚽
     </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
         // Dati dei giocatori
         const players = [
-            { name: "Luigi Pedone", cost: 9 },
-            { name: "Gianni Destino", cost: 8 },
-            { name: "Giuseppe Acquaviva", cost: 7 },
-            { name: "Francesco Matarrese ", cost: 7 },
-            { name: "Domenico Patruno", cost: 6 },
-            { name: "Mariano Di Nicoli", cost: 5 },
-            { name: "Simone Palermo", cost: 4 },
-            { name: "Luca Di Muro", cost: 3 },
-            { name: "Leo Acquaviva", cost: 3 },
-            { name: "Biagio Barbarossa", cost: 3 },
-            { name: "Nicola Iacobone", cost: 2 },
-            { name: "Lucabob Del Vento", cost: 2 }
+            { name: "Luigi Pedone", cost: 9, ruolo: "Difensore", caratteristiche: ["Velocità", "Riflessi", "Forza"] },
+            { name: "Gianni Destino", cost: 8, ruolo: "Centrocampista", caratteristiche: ["Visione", "Passaggio", "Dribbling"] },
+            { name: "Giuseppe Acquaviva", cost: 7, ruolo: "Attaccante", caratteristiche: ["Dribbling", "Ambidestro", "Tiro"] },
+            { name: "Francesco Matarrese", cost: 7, ruolo: "Attaccante", caratteristiche: ["Finalizzazione", "Piazzamento", "Controllo"] },
+            { name: "Domenico Patruno", cost: 6, ruolo: "Centrocampista", caratteristiche: ["Tecnica", "Passaggio", "Tiro"] },
+            { name: "Mariano Di Nicoli", cost: 5, ruolo: "Attaccante", caratteristiche: ["Velocità", "Resilienza", "Contrasto"] },
+            { name: "Simone Palermo", cost: 4, ruolo: "Difensore", caratteristiche: ["Presenza", "Costanza", "Contrasto"] },
+            { name: "Luca Di Muro", cost: 3, ruolo: "Difensore", caratteristiche: ["Forza", "Colpo di testa", "Contrasto"] },
+            { name: "Biagio Barbarossa", cost: 3, ruolo: "Difensore", caratteristiche: ["Forza", "Contrasto", "Affidabilità"] },
+            { name: "Nicola Iacobone", cost: 2, ruolo: "Attaccante", caratteristiche: ["Pressing alto", "Qualità prezzo"] },
+            { name: "Lucabob Del Vento", cost: 2, ruolo: "Difensore", caratteristiche: ["Piazzamento", "Passaggio", "Tiro dalla distanza"] }
         ];
 
         // Dati delle Classifiche (iniziali)
@@ -1048,10 +1078,8 @@
             { name: "Patruno D.", score: 7.5, matches: 4 },
             { name: "Palermo S.", score: 4.5, matches: 3 },
             { name: "Di Muro L.", score: 4.5, matches: 4 },
-            { name: "Acquaviva L.", score: 2.0, matches: 1 },
             { name: "Barbarossa B.", score: 1.5, matches: 1 },
             { name: "Iacobone N.", score: 1.5, matches: 3 },
-            { name: "Di Fazio L", score: 1.0, matches: 1 },
             { name: "Del Vento L.", score: -0.5, matches: 4 }
         ];
 
@@ -1077,7 +1105,40 @@
         }
 
         // Funzioni per la gestione della squadra
-        function renderPlayers() {
+        
+function renderPlayers() {
+    const playersList = document.getElementById('playersList');
+    playersList.innerHTML = '';
+
+    players.forEach((player, index) => {
+        const isSelected = selectedPlayers.some(p => p.name === player.name);
+        const canAfford = player.cost <= remainingBudget;
+        const isDisabled = !isSelected && (!canAfford || selectedPlayers.length >= 5);
+
+        const playerCard = document.createElement('div');
+        playerCard.className = `player-card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`;
+        playerCard.onclick = () => togglePlayer(player);
+
+        playerCard.innerHTML = `
+            <div class="player-info">
+                <div class="player-avatar">${getInitials(player.name)}</div>
+                <div>
+                    <div class="player-name">${player.name}</div>
+                    <div style="font-size: 0.8rem; color: #888;">
+                        <button onclick="event.stopPropagation(); showPlayerDetails(${index});" style="background: none; border: none; color: var(--primary-color); cursor: pointer;">Dettagli</button>
+                    </div>
+                </div>
+            </div>
+            <div class="player-cost">${player.cost}</div>
+        `;
+
+        playersList.appendChild(playerCard);
+    });
+}
+
+
+// OLD renderPlayers hidden below for context
+function renderPlayers_DISABLED_ORIGINAL() {
             const playersList = document.getElementById('playersList');
             playersList.innerHTML = '';
 
@@ -1090,10 +1151,21 @@
                 playerCard.className = `player-card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`;
                 playerCard.onclick = () => togglePlayer(player);
 
+                // Aggiungi le caratteristiche del giocatore
+                let caratteristicheHTML = '<ul class="player-characteristics">';
+                player.caratteristiche.forEach(caratteristica => {
+                    caratteristicheHTML += `<li>${caratteristica}</li>`;
+                });
+                caratteristicheHTML += '</ul>';
+
                 playerCard.innerHTML = `
                     <div class="player-info">
                         <div class="player-avatar">${getInitials(player.name)}</div>
-                        <div class="player-name">${player.name}</div>
+                        <div>
+                            <div class="player-name">${player.name}</div>
+                            <div class="player-ruolo">${player.ruolo}</div>
+                            ${caratteristicheHTML}
+                        </div>
                     </div>
                     <div class="player-cost">${player.cost}</div>
                 `;
@@ -1304,17 +1376,17 @@
                                             <title>Team ${teamName}</title>
                                             <meta name="viewport" content="width=device-width, initial-scale=1.0">
                                             <style>
-                                                body { 
-                                                    margin: 0; 
-                                                    padding: 10px; 
-                                                    background: #f0f4f8; 
+                                                body {
+                                                    margin: 0;
+                                                    padding: 10px;
+                                                    background: #f0f4f8;
                                                     text-align: center;
                                                     font-family: Arial, sans-serif;
                                                 }
-                                                img { 
-                                                    max-width: 100%; 
-                                                    height: auto; 
-                                                    border-radius: 10px; 
+                                                img {
+                                                    max-width: 100%;
+                                                    height: auto;
+                                                    border-radius: 10px;
                                                     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
                                                     margin: 10px 0;
                                                 }
@@ -1426,6 +1498,42 @@
             showSection('teamBuilder'); // Mostra la sezione "Team Builder" di default
         };
 
-    </script>
+    
+
+
+function showPlayerDetails(index) {
+    const player = players[index];
+    const caratteristiche = player.caratteristiche.map(c => `<li>${c}</li>`).join("");
+    const content = `
+        <strong>${player.name}</strong><br>
+        <em>Ruolo: ${player.ruolo}</em>
+        <ul style="margin-top: 10px; padding-left: 20px;">${caratteristiche}</ul>
+    `;
+    alert(content); // semplice alternativa modale. Può essere sostituita con una modale custom
+}
+
+function showPlayerDetails(index) {
+    const player = players[index];
+    const caratteristiche = player.caratteristiche.map(c => `<li>${c}</li>`).join("");
+    const content = `
+        <h3>${player.name}</h3>
+        <p><strong>Ruolo:</strong> ${player.ruolo}</p>
+        <ul style="margin-top: 10px; padding-left: 20px;">${caratteristiche}</ul>
+    `;
+    document.getElementById("modalBody").innerHTML = content;
+    document.getElementById("playerModal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("playerModal").style.display = "none";
+}
+</script>
+
+<div class="modal-overlay" id="playerModal" style="display:none;">
+<div class="modal-content">
+<span class="close-button" onclick="closeModal()">×</span>
+<div id="modalBody"></div>
+</div>
+</div>
 </body>
 </html>
