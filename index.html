@@ -1558,12 +1558,30 @@
       document.getElementById(sectionId).style.display = 'block';
     }
 
+    function resizeAvatars() {
+    const avatars = document.querySelectorAll('.player-avatar');
+    avatars.forEach(avatar => {
+    const text = avatar.textContent;
+    let fontSize = 16; // Dimensione font predefinita
+
+    if (text.length > 2) { // Se ci sono più di due lettere
+      fontSize = 14;  // Riduce la dimensione
+    }
+    if (text.length > 3) {
+      fontSize = 12;
+    }
+
+    avatar.style.fontSize = `${fontSize}px`;
+    });
+    }
+
     // Inizializzazione
     window.onload = function () {
       renderPlayers();
       renderSelectedPlayers();
       renderRankings();
       showSection('teamBuilder'); // Mostra la sezione "Team Builder" di default
+      resizeAvatars();
     };
 
     function showPlayerDetails(index) {
