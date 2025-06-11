@@ -303,15 +303,17 @@
     }
 
     .player-info {
-    display: flex;
-    align-items: center; /* Allinea verticalmente */
-    gap: 16px;
-    width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      /* Aggiunto */
+      width: 100%;
+      /* Aggiunto */
     }
 
     .player-avatar {
-    width: 12vw; /* Larghezza relativa alla viewport */
-    height: 12vw; /* Altezza relativa alla viewport */
+    width: 48px;  /* Larghezza fissa */
+    height: 48px; /* Altezza fissa */
     background: var(--primary-gradient);
     border-radius: 50%;
     display: flex;
@@ -925,14 +927,6 @@
 
       .budget-display {
         font-size: 1.8rem;
-      }
-      .player-avatar {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-      }
-      .player-name {
-        font-size: 1rem;
       }
     }
 
@@ -1564,30 +1558,12 @@
       document.getElementById(sectionId).style.display = 'block';
     }
 
-    function resizeAvatars() {
-    const avatars = document.querySelectorAll('.player-avatar');
-    avatars.forEach(avatar => {
-    const text = avatar.textContent;
-    let fontSize = 16; // Dimensione font predefinita
-
-    if (text.length > 2) { // Se ci sono più di due lettere
-      fontSize = 14;  // Riduce la dimensione
-    }
-    if (text.length > 3) {
-      fontSize = 12;
-    }
-
-    avatar.style.fontSize = `${fontSize}px`;
-    });
-    }
-
     // Inizializzazione
     window.onload = function () {
       renderPlayers();
       renderSelectedPlayers();
       renderRankings();
       showSection('teamBuilder'); // Mostra la sezione "Team Builder" di default
-      resizeAvatars();
     };
 
     function showPlayerDetails(index) {
