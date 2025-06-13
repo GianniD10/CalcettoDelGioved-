@@ -1087,12 +1087,12 @@
   <script>
     // Dati dei giocatori
     const players = [
-      <!-- { name: "Luigi Pedone", cost: 9, ruolo: "Difensore", caratteristiche: ["Velocità", "Riflessi", "Forza"] }, -->
+      { name: "Luigi Pedone", cost: 9, ruolo: "Difensore", caratteristiche: ["Velocità", "Riflessi", "Forza"] },
       { name: "Gianni Destino", cost: 8, ruolo: "Centrocampista", caratteristiche: ["Visione", "Passaggio", "Dribbling"] },
       { name: "Giuseppe Acquaviva", cost: 7, ruolo: "Attaccante", caratteristiche: ["Dribbling", "Ambidestro", "Tiro"] },
       { name: "Francesco Matarrese", cost: 7, ruolo: "Attaccante", caratteristiche: ["Finalizzazione", "Piazzamento", "Controllo"] },
       { name: "Domenico Patruno", cost: 5, ruolo: "Centrocampista", caratteristiche: ["Tecnica", "Passaggio", "Tiro"] },
-      <!-- { name: "Mariano Di Nicoli", cost: 5, ruolo: "Attaccante", caratteristiche: ["Velocità", "Resilienza", "Contrasto"] }, -->
+      { name: "Mariano Di Nicoli", cost: 5, ruolo: "Attaccante", caratteristiche: ["Velocità", "Resilienza", "Contrasto"] },
       { name: "Simone Palermo", cost: 3, ruolo: "Difensore", caratteristiche: ["Presenza", "Costanza", "Contrasto"] },
       { name: "Luca Di Muro", cost: 3, ruolo: "Difensore", caratteristiche: ["Forza", "Colpo di testa", "Contrasto"] },
       { name: "Biagio Barbarossa", cost: 3, ruolo: "Difensore", caratteristiche: ["Forza", "Contrasto", "Affidabilità"] },
@@ -1103,60 +1103,60 @@
 
     // Dati delle Classifiche (iniziali)
     const weeklyTeamRankingData = [
-      { name: "PEDONE", score: 14 },
-      { name: "DI NICOLI", score: 13.5 },
-      { name: "DI MURO", score: 13.5 },
-      { name: "IACOBONE", score: 13.5 },
-      { name: "MATARRESE", score: 13 },
-      { name: "PALERMO", score: 13 },
-      { name: "DESTINO", score: 11.5 },
-      { name: "BARBAROSSA", score: 11.5 },
-      { name: "ACQUAVIVA", score: 10.5 },
-      { name: "DEL VENTO", score: 10 },
-      { name: "PATRUNO", score: 8.5 }
+      { name: "DESTINO", score: 8.5 },
+      { name: "ACQUAVIVA", score: 7.5 },
+      { name: "PATRUNO", score: 6.0 },
+      { name: "DI NICOLI", score: 5.5 },
+      { name: "MATARRESE", score: 4.5 },
+      { name: "DEL VENTO", score: 4.5 },
+      { name: "PEDONE", score: 4.0 },
+      { name: "DI MURO", score: 4.0 },
+      { name: "PALERMO", score: 4.0 },
+      { name: "BARBAROSSA", score: 4.0 },
+      { name: "IACOBONE", score: -1.5 }
     ];
 
     const globalTeamRankingData = [
-      { name: "PEDONE", score: 14 },
-      { name: "DI NICOLI", score: 13.5 },
-      { name: "DI MURO", score: 13.5 },
-      { name: "IACOBONE", score: 13.5 },
-      { name: "MATARRESE", score: 13 },
-      { name: "PALERMO", score: 13 },
-      { name: "DESTINO", score: 11.5 },
-      { name: "BARBAROSSA", score: 11.5 },
-      { name: "ACQUAVIVA", score: 10.5 },
-      { name: "DEL VENTO", score: 10 },
-      { name: "PATRUNO", score: 8.5 }
+      { name: "DESTINO", score: 20.0 },
+      { name: "DI NICOLI", score: 19.0 },
+      { name: "PEDONE", score: 18.0 },
+      { name: "ACQUAVIVA", score: 18.0 },
+      { name: "MATARRESE", score: 17.5 },
+      { name: "DI MURO", score: 17.5 },
+      { name: "PALERMO", score: 17.0 },
+      { name: "BARBAROSSA", score: 15.5 },
+      { name: "DEL VENTO", score: 14.5 },
+      { name: "PATRUNO", score: 14.5 },
+      { name: "IACOBONE", score: 12.0 }
     ];
 
     const weeklyPlayerRankingData = [
-      { name: "Destino G.", score: 6.5, matches: 1 },
-      { name: "Matarrese F.", score: 6.0, matches: 1 },
-      { name: "Pedone L.", score: 2.0, matches: 1 },
-      { name: "Acquaviva G.", score: 3.5, matches: 1 },
-      { name: "Di Nicoli M.", score: 2.5, matches: 1 },
-      { name: "Patruno D.", score: 1.5, matches: 1 },
-      { name: "Di Muro L.", score: 1.5, matches: 1 },
-      { name: "Barbarossa B.", score: 1.5, matches: 1 },
-      { name: "Iacobone N.", score: 0.0, matches: 1 },
-      { name: "Del Vento L.", score: 2.5, matches: 1 }
+      { name: "Destino G.", score: 0.5, matches: 1 },
+      { name: "Matarrese F.", score: 2.0, matches: 1 },
+      { name: "Acquaviva L.", score: 1.0, matches: 1 },
+      { name: "Acquaviva G.", score: 1.0, matches: 1 },
+      { name: "Palermo S.", score: 0.5, matches: 1 },
+      { name: "Patruno D.", score: 5.0, matches: 1 },
+      { name: "Di Muro L.", score: 0.0, matches: 1 },
+      { name: "Barbarossa B.", score: 0.0, matches: 1 },
+      { name: "Iacobone N.", score: -2.5, matches: 1 },
+      { name: "Del Vento L.", score: 1.0, matches: 1 }
     ];
 
     const globalPlayerRankingData = [
       { name: "Pedone L.", score: 19.0, matches: 4 },
-      { name: "Destino G.", score: 18.5, matches: 4 },
-      { name: "Acquaviva G.", score: 12.0, matches: 4 },
-      { name: "Matarrese F.", score: 12.0, matches: 3 },
+      { name: "Destino G.", score: 19.0, matches: 5 },
+      { name: "Acquaviva G.", score: 13.0, matches: 5 },
+      { name: "Matarrese F.", score: 14.0, matches: 4 },
       { name: "Di Nicoli M.", score: 9.0, matches: 4 },
-      { name: "Patruno D.", score: 7.5, matches: 4 },
-      { name: "Palermo S.", score: 4.5, matches: 3 },
-      { name: "Di Muro L.", score: 4.5, matches: 4 },
-      { name: "Acquaviva L.", score: 2.0, matches: 1 },
-      { name: "Barbarossa B.", score: 1.5, matches: 1 },
-      { name: "Iacobone N.", score: 1.5, matches: 3 },
+      { name: "Patruno D.", score: 12.5, matches: 5 },
+      { name: "Palermo S.", score: 5.0, matches: 4 },
+      { name: "Di Muro L.", score: 4.5, matches: 5 },
+      { name: "Acquaviva L.", score: 3.0, matches: 2 },
+      { name: "Barbarossa B.", score: 1.5, matches: 2 },
+      { name: "Iacobone N.", score: -1.0, matches: 4 },
       { name: "Di Fazio L.", score: 1.0, matches: 1 },
-      { name: "Del Vento L.", score: -0.5, matches: 4 }
+      { name: "Del Vento L.", score: 0.5, matches: 5 }
     ];
 
     // Variabili di stato
