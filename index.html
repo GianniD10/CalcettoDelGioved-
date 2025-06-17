@@ -312,21 +312,26 @@
     }
 
     .player-avatar {
-    width: 48px;  /* Larghezza fissa */
-    height: 48px; /* Altezza fissa */
-    background: var(--primary-gradient);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    font-weight: 700;
-    font-size: 16px; 
-    box-shadow: var(--shadow-sm);
-    position: relative;
-    display: flex;          /* Importante per l'allineamento */
-    align-items: center;    /* Allinea verticalmente */
-    justify-content: center; /* Allinea orizzontalmente */
+      width: 48px;
+      /* Larghezza fissa */
+      height: 48px;
+      /* Altezza fissa */
+      background: var(--primary-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 16px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      display: flex;
+      /* Importante per l'allineamento */
+      align-items: center;
+      /* Allinea verticalmente */
+      justify-content: center;
+      /* Allinea orizzontalmente */
     }
 
     .player-avatar::after {
@@ -943,7 +948,7 @@
 
     /* Animazioni aggiuntive */
     @keyframes slideInUp {
-      from {
+            from {
         opacity: 0;
         transform: translateY(30px);
       }
@@ -1009,10 +1014,47 @@
     .close-button:hover {
       color: #000;
     }
+
+    /* Stili per il banner di auguri */
+    #birthday-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to right, #fce4ec, #f6c8d9); /* Sfumatura rosa */
+      color: #e91e63; /* Rosa acceso */
+      text-align: center;
+      padding: 20px 0;
+      font-size: 2.5em; /* Dimensione grande */
+      font-family: 'Playfair Display', serif; /* Font elegante */
+      font-weight: bold;
+      letter-spacing: 2px;
+      z-index: 10000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      animation: fadeInDown 0.5s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- Banner di auguri -->
+  <div id="birthday-banner">
+    🎉 TANTI AUGURI LUCA! 🎉
+  </div>
+
   <div class="container">
     <h1>Fantasy Calcio a 5</h1>
     <div class="menu">
@@ -1037,10 +1079,12 @@
           <div class="action-buttons">
             <button class="btn btn-reset" onclick="resetTeam()">🔄 Reset</button>
             <button class="btn btn-save" disabled id="saveBtn" onclick="saveTeamImage()">💾 Salva Immagine</button>
-<img id="generatedImagePreview" style="display:none; margin-top:20px; border-radius:12px; max-width:100%; box-shadow:0 4px 10px rgba(0,0,0,0.2);" alt="Anteprima squadra" />
-<div id="saveInstructions" style="display:none; font-size:14px; color:#444; margin-top:10px;">
-  📱 Tieni premuto sull'immagine per salvarla su smartphone
-</div>
+            <img id="generatedImagePreview"
+              style="display:none; margin-top:20px; border-radius:12px; max-width:100%; box-shadow:0 4px 10px rgba(0,0,0,0.2);"
+              alt="Anteprima squadra" />
+            <div id="saveInstructions" style="display:none; font-size:14px; color:#444; margin-top:10px;">
+              📱 Tieni premuto sull'immagine per salvarla su smartphone
+            </div>
           </div>
         </div>
       </div>
@@ -1103,60 +1147,60 @@
 
     // Dati delle Classifiche (iniziali)
     const weeklyTeamRankingData = [
-      { name: "DESTINO", score: 8.5 },
-      { name: "ACQUAVIVA", score: 7.5 },
-      { name: "PATRUNO", score: 6.0 },
-      { name: "DI NICOLI", score: 5.5 },
-      { name: "MATARRESE", score: 4.5 },
-      { name: "DEL VENTO", score: 4.5 },
-      { name: "PEDONE", score: 4.0 },
-      { name: "DI MURO", score: 4.0 },
-      { name: "PALERMO", score: 4.0 },
-      { name: "BARBAROSSA", score: 4.0 },
-      { name: "IACOBONE", score: -1.5 }
+      { name: "DI NICOLI", score: 13.0 },
+      { name: "PEDONE", score: 13.0 },
+      { name: "PATRUNO", score: 11.5 },
+      { name: "PALERMO", score: 11.5 },
+      { name: "MATARRESE", score: 11.0 },
+      { name: "DEL VENTO", score: 10.5 },
+      { name: "ACQUAVIVA", score: 8.5 },
+      { name: "BARBAROSSA", score: 8.5 },
+      { name: "DESTINO", score: 8.0 },
+      { name: "DI MURO", score: 8.0 },
+      { name: "IACOBONE", score: 0.0 }
     ];
 
     const globalTeamRankingData = [
-      { name: "DESTINO", score: 20.0 },
-      { name: "DI NICOLI", score: 19.0 },
-      { name: "PEDONE", score: 18.0 },
-      { name: "ACQUAVIVA", score: 18.0 },
-      { name: "MATARRESE", score: 17.5 },
-      { name: "DI MURO", score: 17.5 },
-      { name: "PALERMO", score: 17.0 },
-      { name: "BARBAROSSA", score: 15.5 },
-      { name: "DEL VENTO", score: 14.5 },
-      { name: "PATRUNO", score: 14.5 },
+      { name: "DI NICOLI", score: 32.0 },
+      { name: "PEDONE", score: 31.0 },
+      { name: "MATARRESE", score: 28.5 },
+      { name: "PALERMO", score: 28.5 },
+      { name: "DESTINO", score: 28.0 },
+      { name: "ACQUAVIVA", score: 26.5 },
+      { name: "PATRUNO", score: 26.0 },
+      { name: "DI MURO", score: 25.5 },
+      { name: "DEL VENTO", score: 25.0 },
+      { name: "BARBAROSSA", score: 24.0 },
       { name: "IACOBONE", score: 12.0 }
     ];
 
     const weeklyPlayerRankingData = [
-      { name: "Destino G.", score: 0.5, matches: 1 },
-      { name: "Matarrese F.", score: 2.0, matches: 1 },
-      { name: "Acquaviva L.", score: 1.0, matches: 1 },
-      { name: "Acquaviva G.", score: 1.0, matches: 1 },
-      { name: "Palermo S.", score: 0.5, matches: 1 },
-      { name: "Patruno D.", score: 5.0, matches: 1 },
-      { name: "Di Muro L.", score: 0.0, matches: 1 },
-      { name: "Barbarossa B.", score: 0.0, matches: 1 },
-      { name: "Iacobone N.", score: -2.5, matches: 1 },
-      { name: "Del Vento L.", score: 1.0, matches: 1 }
+      { name: "Matarrese F.", score: 6.0, matches: 1 },
+      { name: "Pedone L.", score: 3.0, matches: 1 },
+      { name: "Acquaviva G.", score: 2.5, matches: 1 },
+      { name: "Destino G.", score: 2.5, matches: 1 },
+      { name: "Patruno D.", score: 2.0, matches: 1 },
+      { name: "Di Nicoli M.", score: 1.5, matches: 1 },
+      { name: "Barbarossa B.", score: 1.5, matches: 1 },
+      { name: "Del Vento L.", score: 1.5, matches: 1 },
+      { name: "Palermo S.", score: 0.0, matches: 1 },
+      { name: "Di Muro L.", score: -1.5, matches: 1 }
     ];
 
     const globalPlayerRankingData = [
-      { name: "Pedone L.", score: 19.0, matches: 4 },
-      { name: "Destino G.", score: 19.0, matches: 5 },
-      { name: "Acquaviva G.", score: 13.0, matches: 5 },
-      { name: "Matarrese F.", score: 14.0, matches: 4 },
-      { name: "Di Nicoli M.", score: 9.0, matches: 4 },
-      { name: "Patruno D.", score: 12.5, matches: 5 },
-      { name: "Palermo S.", score: 5.0, matches: 4 },
-      { name: "Di Muro L.", score: 4.5, matches: 5 },
+      { name: "Pedone L.", score: 22.0, matches: 5 },
+      { name: "Matarrese F.", score: 20.0, matches: 5 },
+      { name: "Destino G.", score: 21.5, matches: 6 },
+      { name: "Acquaviva G.", score: 15.5, matches: 6 },
+      { name: "Patruno D.", score: 14.5, matches: 6 },
+      { name: "Di Nicoli M.", score: 10.5, matches: 5 },
+      { name: "Palermo S.", score: 5.0, matches: 5 },
+      { name: "Di Muro L.", score: 3.0, matches: 6 },
       { name: "Acquaviva L.", score: 3.0, matches: 2 },
-      { name: "Barbarossa B.", score: 1.5, matches: 2 },
+      { name: "Barbarossa B.", score: 3.0, matches: 3 },
+      { name: "Del Vento L.", score: 2.0, matches: 6 },
       { name: "Iacobone N.", score: -1.0, matches: 4 },
-      { name: "Di Fazio L.", score: 1.0, matches: 1 },
-      { name: "Del Vento L.", score: 0.5, matches: 5 }
+      { name: "Di Fazio L.", score: 1.0, matches: 1 }
     ];
 
     // Variabili di stato
