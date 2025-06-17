@@ -312,26 +312,21 @@
     }
 
     .player-avatar {
-      width: 48px;
-      /* Larghezza fissa */
-      height: 48px;
-      /* Altezza fissa */
-      background: var(--primary-gradient);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      font-weight: 700;
-      font-size: 16px;
-      box-shadow: var(--shadow-sm);
-      position: relative;
-      display: flex;
-      /* Importante per l'allineamento */
-      align-items: center;
-      /* Allinea verticalmente */
-      justify-content: center;
-      /* Allinea orizzontalmente */
+    width: 48px;  /* Larghezza fissa */
+    height: 48px; /* Altezza fissa */
+    background: var(--primary-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    display: flex;          /* Importante per l'allineamento */
+    align-items: center;    /* Allinea verticalmente */
+    justify-content: center; /* Allinea orizzontalmente */
     }
 
     .player-avatar::after {
@@ -946,9 +941,10 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
+    /* Animazioni
     /* Animazioni aggiuntive */
     @keyframes slideInUp {
-            from {
+      from {
         opacity: 0;
         transform: translateY(30px);
       }
@@ -1016,34 +1012,52 @@
     }
 
     /* Stili per il banner di auguri */
-    #birthday-banner {
+    .birthday-banner {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: linear-gradient(to right, #fce4ec, #f6c8d9); /* Sfumatura rosa */
-      color: #e91e63; /* Rosa acceso */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-xl);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      z-index: 3000; /* Assicura che sia sopra tutto */
       text-align: center;
-      padding: 20px 0;
-      font-size: 2.5em; /* Dimensione grande */
-      font-family: 'Playfair Display', serif; /* Font elegante */
-      font-weight: bold;
-      letter-spacing: 2px;
-      z-index: 10000;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      animation: fadeInDown 0.5s ease-out;
+      font-family: 'Oswald', sans-serif;
+      color: var(--text-color);
+      max-width: 80%;
+      width: 600px;
     }
 
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-50px);
-      }
+    .birthday-banner h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .birthday-banner p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .birthday-banner .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: var(--transition-fast);
+    }
+
+    .birthday-banner .close-btn:hover {
+      color: var(--error-color);
+      transform: scale(1.1);
     }
   </style>
 </head>
@@ -1051,8 +1065,17 @@
 <body>
 
   <!-- Banner di auguri -->
-  <div id="birthday-banner">
-    🎉 TANTI AUGURI LUCA! 🎉
+  <div class="birthday-banner" id="birthdayBanner">
+    <span class="close-btn" onclick="closeBirthdayBanner()">X</span>
+    <h2>TANTI AUGURI LUCA!</h2>
+    <p>
+      Luca Dennis Di Muro, nasce a Timișoara (Città rumena, nota per i suoi parchi e la sua architettura barocca,
+      designata Capitale Europea della Cultura nel 2023), il 20 Aprile 2002; costretto, pochi mesi dopo, ad emigrare
+      in Italia per cause lavorative. Il 17 Giugno 2003 arriva al porto di Brindisi e da lì inizia la sua avventura
+      italiana. Smistato successivamente a Canosa di Puglia, città nel quale risiede tutt'ora, si stabilisce assieme
+      alla sua famiglia e nel 2024 entra nel corpo della Polizia locale. Il suo spostamento, però, in età così
+      prematura, lo porta a mantenere rapporti distanti con la gente; da qui nasce il soprannome 'Il Freddo'.
+    </p>
   </div>
 
   <div class="container">
@@ -1079,12 +1102,10 @@
           <div class="action-buttons">
             <button class="btn btn-reset" onclick="resetTeam()">🔄 Reset</button>
             <button class="btn btn-save" disabled id="saveBtn" onclick="saveTeamImage()">💾 Salva Immagine</button>
-            <img id="generatedImagePreview"
-              style="display:none; margin-top:20px; border-radius:12px; max-width:100%; box-shadow:0 4px 10px rgba(0,0,0,0.2);"
-              alt="Anteprima squadra" />
-            <div id="saveInstructions" style="display:none; font-size:14px; color:#444; margin-top:10px;">
-              📱 Tieni premuto sull'immagine per salvarla su smartphone
-            </div>
+<img id="generatedImagePreview" style="display:none; margin-top:20px; border-radius:12px; max-width:100%; box-shadow:0 4px 10px rgba(0,0,0,0.2);" alt="Anteprima squadra" />
+<div id="saveInstructions" style="display:none; font-size:14px; color:#444; margin-top:10px;">
+  📱 Tieni premuto sull'immagine per salvarla su smartphone
+</div>
           </div>
         </div>
       </div>
@@ -1605,6 +1626,11 @@
       const sections = document.querySelectorAll('.section');
       sections.forEach(section => section.style.display = 'none');
       document.getElementById(sectionId).style.display = 'block';
+    }
+
+    // Funzione per chiudere il banner di auguri
+    function closeBirthdayBanner() {
+      document.getElementById('birthdayBanner').style.display = 'none';
     }
 
     // Inizializzazione
