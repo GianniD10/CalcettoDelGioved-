@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -932,6 +933,7 @@
         width: 90% !important;
         padding: 20px !important;
         font-size: 14px;
+        background-color: black;
       }
 
       .birthday-banner h2 {
@@ -955,6 +957,7 @@
       backdrop-filter: blur(10px);
       background: rgba(255, 255, 255, 0.1);
     }
+
     /* Animazioni
     /* Animazioni aggiuntive */
     @keyframes slideInUp {
@@ -962,31 +965,31 @@
         opacity: 0;
         transform: translateY(30px);
       }
-    
+
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-    
+
     .player-card,
     .selected-player,
     .ranking-list li {
       animation: slideInUp 0.4s ease-out;
     }
-    
+
     /* Effetti di hover globali */
     * {
       transition: var(--transition-fast);
     }
-    
+
     /* Aggiunti stili per la tabella delle caratteristiche */
     .player-characteristics {
       margin-top: 10px;
       font-size: 0.85rem;
       color: var(--text-muted);
     }
-    
+
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -999,7 +1002,7 @@
       align-items: center;
       z-index: 2000;
     }
-    
+
     .modal-content {
       background: white;
       padding: 30px;
@@ -1010,7 +1013,7 @@
       position: relative;
       animation: fadeIn 0.3s ease-out;
     }
-    
+
     .close-button {
       position: absolute;
       top: 10px;
@@ -1020,679 +1023,676 @@
       cursor: pointer;
       color: #999;
     }
-    
+
     .close-button:hover {
       color: #000;
     }
-    
-    /* Stili per il banner di lutto */
-    .mourning-banner {
+
+    /* Stili per il banner di auguri */
+    .birthday-banner {
       position: fixed;
+      background-color: black;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.85); /* Sfondo nero semitrasparente */
+      background: rgba(255, 255, 255, 0.95);
       padding: 40px;
       border-radius: var(--border-radius-lg);
       box-shadow: var(--shadow-xl);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1); /* Bordo bianco sottile */
-      z-index: 3000;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      z-index: 3000; /* Assicura che sia sopra tutto */
       text-align: center;
       font-family: 'Oswald', sans-serif;
-      color: var(--white); /* Testo bianco */
+      color: var(--text-color);
       max-width: 80%;
       width: 600px;
     }
-    
-    .mourning-banner h2 {
+
+    .birthday-banner h2 {
       font-size: 3rem;
       font-weight: 700;
       margin-bottom: 20px;
-      color: var(--white); /* Titolo bianco */
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Ombra per il testo */
+      color: white;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-    
-    .mourning-banner p {
+
+    .birthday-banner p {
       font-size: 1rem;
       line-height: 1.6;
-      color: rgba(255, 255, 255, 0.8); /* Testo più chiaro */
+      color: white;
     }
-    
-    .mourning-banner .close-btn {
+
+    .birthday-banner .close-btn {
       position: absolute;
       top: 10px;
       right: 10px;
       font-size: 24px;
       cursor: pointer;
-      color: rgba(255, 255, 255, 0.5); /* Icona di chiusura più chiara */
+      color: var(--text-muted);
       transition: var(--transition-fast);
     }
-    
-    .mourning-banner .close-btn:hover {
-      color: var(--white); /* Icona di chiusura più visibile al hover */
+
+    .birthday-banner .close-btn:hover {
+      color: var(--error-color);
       transform: scale(1.1);
     }
-    </style>
-    </head>
-    <body>
-      <!-- Banner di lutto -->
-      <div class="mourning-banner" id="mourningBanner">
-        <span class="close-btn" onclick="closeMourningBanner()">X</span>
-        <h2>Riposa in pace, Giuseppe.</h2>
-        <p style="font-size: 1.2rem;">
-          Il Signore ti ha chiamato a Sé, e ora giochi la tua partita più bella nei campi del Cielo.
-        </p>
-        <p>
-          Hai vissuto con il cuore aperto, generoso e pieno di passione, anche per quel pallone che tanto amavi.
-        </p>
-        <p>
-          Il tuo sorriso, la tua lealtà e la tua fede ci accompagneranno ogni giorno.
-        </p>
-        <p>
-          Ora che sei nella pace eterna, prega per noi e guidaci da lassù, come facevi in campo con coraggio e umiltà.
-        </p>
-        <p>
-          Riposa in pace, caro Giuseppe.
-        </p>
-        <p>
-          Nel cuore di Dio, e in quello di chi ti ha voluto bene, non sarai mai dimenticato.
-        </p>
-      </div>
-      <div class="container">
-        <h1>Fantasy Calcio a 5</h1>
-        <div class="menu">
-          <button onclick="showSection('teamBuilder')">🏗️ Team Builder</button>
-          <button onclick="showSection('rankings')">🏆 Classifiche</button>
+  </style>
+</head>
+
+<body>
+
+  <!-- Banner di auguri -->
+  <div class="birthday-banner" id="birthdayBanner">
+    <span class="close-btn" onclick="closeBirthdayBanner()">X</span>
+    <h2>Riposa in pace, Giuseppe. 🕊️ †</h2>
+    <p>
+      Il Signore ti ha chiamato a sé, e ora giochi la tua partita più bella nei campi del Cielo.
+      Hai vissuto con il cuore aperto, generoso e pieno di passione, anche per quel pallone che tanto amavi.
+      Il tuo sorriso, la tua lealtà e la tua fede ci accompagneranno ogni giorno.
+      Ora che sei nella pace eterna, prega per noi e guidaci da lassù, come facevi in campo con coraggio e umiltà.
+      Riposa in pace, caro Giuseppe.
+      Nel cuore di Dio, e in quello di chi ti ha voluto bene, non sarai mai dimenticato.
+    </p>
+  </div>
+
+  <div class="container">
+    <h1>Fantasy Calcio a 5</h1>
+    <div class="menu">
+      <button onclick="showSection('teamBuilder')">🏗️ Team Builder</button>
+      <button onclick="showSection('rankings')">🏆 Classifiche</button>
+    </div>
+    <div class="section" id="teamBuilder">
+      <div class="main-content">
+        <div class="players-section">
+          <h2>👥 Giocatori Disponibili</h2>
+          <div id="playersList"></div>
         </div>
-        <div class="section" id="teamBuilder">
-          <div class="main-content">
-            <div class="players-section">
-              <h2>👥 Giocatori Disponibili</h2>
-              <div id="playersList"></div>
-            </div>
-            <div class="team-section">
-              <div class="budget-info">
-                <h3>💰 Budget Rimanente</h3>
-                <div class="budget-display"><span id="remainingBudget">24</span> crediti</div>
-              </div>
-              <div class="team-list">
-                <h3>🏆 La Tua Squadra <span style="white-space: nowrap;">(<span id="teamCount">0</span>/5)</span></h3>
-                <div id="selectedPlayers"></div>
-              </div>
-              <div class="action-buttons">
-                <button class="btn btn-reset" onclick="resetTeam()">🔄 Reset</button>
-                <button class="btn btn-save" disabled id="saveBtn" onclick="saveTeamImage()">💾 Salva Immagine</button>
-              <img id="generatedImagePreview" style="display:none; margin-top:20px; border-radius:12px; max-width:100%; box-shadow:0 4px 10px rgba(0,0,0,0.2);" alt="Anteprima squadra" />
-              <div id="saveInstructions" style="display:none; font-size:14px; color:#444; margin-top:10px;">
-                📱 Tieni premuto sull'immagine per salvarla su smartphone
-              </div>
-              </div>
-            </div>
+        <div class="team-section">
+          <div class="budget-info">
+            <h3>💰 Budget Rimanente</h3>
+            <div class="budget-display"><span id="remainingBudget">24</span> crediti</div>
           </div>
-          <div class="team-image" id="teamImage">
-            <h2>🏆 LA MIA SQUADRA</h2>
-            <div class="formation" id="formation"></div>
-            <div class="total-cost">
-              Costo Totale: <span id="totalCostDisplay">0</span> crediti
-            </div>
+          <div class="team-list">
+            <h3>🏆 La Tua Squadra <span style="white-space: nowrap;">(<span id="teamCount">0</span>/5)</span></h3>
+            <div id="selectedPlayers"></div>
           </div>
-        </div>
-        <div class="rankings-section section" id="rankings">
-          <h2>🏆 Classifiche</h2>
-          <div class="ranking-type-selection">
-            <label for="ranking-type">Tipo di Classifica:</label>
-            <select id="ranking-type" onchange="renderRankings()">
-              <option value="weekly">📅 Settimanale</option>
-              <option value="global">🌍 Globale</option>
-            </select>
-          </div>
-          <div class="rankings-container">
-            <div class="team-rankings">
-              <h3>🏅 Classifica Squadre</h3>
-              <ul class="ranking-list" id="teamRankingList"></ul>
-            </div>
-            <br /><br />
-            <div class="player-rankings">
-              <h3>⭐ Classifica Giocatori</h3>
-              <label for="sort-by">Ordina per:</label>
-              <select id="sort-by" onchange="sortPlayersRanking()">
-                <option value="points">🎯 Punteggio</option>
-                <option value="average">📊 Media</option>
-              </select>
-              <ul class="ranking-list" id="playerRankingList"></ul>
-            </div>
+          <div class="action-buttons">
+            <button class="btn btn-reset" onclick="resetTeam()">🔄 Reset</button>
+            <button class="btn btn-save" disabled id="saveBtn" onclick="saveTeamImage()">💾 Salva Immagine</button>
+<img id="generatedImagePreview" style="display:none; margin-top:20px; border-radius:12px; max-width:100%; box-shadow:0 4px 10px rgba(0,0,0,0.2);" alt="Anteprima squadra" />
+<div id="saveInstructions" style="display:none; font-size:14px; color:#444; margin-top:10px;">
+  📱 Tieni premuto sull'immagine per salvarla su smartphone
+</div>
           </div>
         </div>
       </div>
-      <div class="notification" id="notification"></div>
-      <footer>
-        © 2025 Fantasy Calcio a 5 - Bob Difensore 7 ⚽
-      </footer>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-      <script>
-        // Dati dei giocatori
-        const players = [
-          { name: "Luigi Pedone", cost: 9, ruolo: "Difensore", caratteristiche: ["Velocità", "Riflessi", "Forza"] },
-          { name: "Gianni Destino", cost: 8, ruolo: "Centrocampista", caratteristiche: ["Visione", "Passaggio", "Dribbling"] },
-          { name: "Giuseppe Acquaviva", cost: 7, ruolo: "Attaccante", caratteristiche: ["Dribbling", "Ambidestro", "Tiro"] },
-          { name: "Francesco Matarrese", cost: 7, ruolo: "Attaccante", caratteristiche: ["Finalizzazione", "Piazzamento", "Controllo"] },
-          { name: "Domenico Patruno", cost: 6, ruolo: "Centrocampista", caratteristiche: ["Tecnica", "Passaggio", "Tiro"] },
-          { name: "Mariano Di Nicoli", cost: 5, ruolo: "Attaccante", caratteristiche: ["Velocità", "Resilienza", "Contrasto"] },
-          { name: "Simone Palermo", cost: 3, ruolo: "Difensore", caratteristiche: ["Presenza", "Costanza", "Contrasto"] },
-          { name: "Luca Di Muro", cost: 3, ruolo: "Difensore", caratteristiche: ["Forza", "Colpo di testa", "Contrasto"] },
-          { name: "Biagio Barbarossa", cost: 3, ruolo: "Difensore", caratteristiche: ["Forza", "Contrasto", "Affidabilità"] },
-          //{ name: "Leo Acquaviva", cost: 3, ruolo: "Difensore", caratteristiche: ["Propensione al tiro", "Contrasto"] },
-          //{ name: "Nicola Iacobone", cost: 2, ruolo: "Attaccante", caratteristiche: ["Pressing alto", "Qualità prezzo"] },
-          { name: "Lucabob Del Vento", cost: 2, ruolo: "Difensore", caratteristiche: ["Piazzamento", "Passaggio", "Tiro dalla distanza"] }
-        ];
-        // Dati delle Classifiche (iniziali)
-        const weeklyTeamRankingData = [
-          { name: "DI NICOLI", score: 13.0 },
-          { name: "PEDONE", score: 13.0 },
-          { name: "PATRUNO", score: 11.5 },
-          { name: "PALERMO", score: 11.5 },
-          { name: "MATARRESE", score: 11.0 },
-          { name: "DEL VENTO", score: 10.5 },
-          { name: "ACQUAVIVA", score: 8.5 },
-          { name: "BARBAROSSA", score: 8.5 },
-          { name: "DESTINO", score: 8.0 },
-          { name: "DI MURO", score: 8.0 },
-          { name: "IACOBONE", score: 0.0 }
-        ];
-        
-        const globalTeamRankingData = [
-          { name: "DI NICOLI", score: 32.0 },
-          { name: "PEDONE", score: 31.0 },
-          { name: "MATARRESE", score: 28.5 },
-          { name: "PALERMO", score: 28.5 },
-          { name: "DESTINO", score: 28.0 },
-          { name: "ACQUAVIVA", score: 26.5 },
-          { name: "PATRUNO", score: 26.0 },
-          { name: "DI MURO", score: 25.5 },
-          { name: "DEL VENTO", score: 25.0 },
-          { name: "BARBAROSSA", score: 24.0 },
-          { name: "IACOBONE", score: 12.0 }
-        ];
-        
-        const weeklyPlayerRankingData = [
-          { name: "Matarrese F.", score: 6.0, matches: 1 },
-          { name: "Pedone L.", score: 3.0, matches: 1 },
-          { name: "Acquaviva G.", score: 2.5, matches: 1 },
-          { name: "Destino G.", score: 2.5, matches: 1 },
-          { name: "Patruno D.", score: 2.0, matches: 1 },
-          { name: "Di Nicoli M.", score: 1.5, matches: 1 },
-          { name: "Barbarossa B.", score: 1.5, matches: 1 },
-          { name: "Del Vento L.", score: 1.5, matches: 1 },
-          { name: "Palermo S.", score: 0.0, matches: 1 },
-          { name: "Di Muro L.", score: -1.5, matches: 1 }
-        ];
-        
-        const globalPlayerRankingData = [
-          { name: "Pedone L.", score: 22.0, matches: 5 },
-          { name: "Matarrese F.", score: 20.0, matches: 5 },
-          { name: "Destino G.", score: 21.5, matches: 6 },
-          { name: "Acquaviva G.", score: 15.5, matches: 6 },
-          { name: "Patruno D.", score: 14.5, matches: 6 },
-          { name: "Di Nicoli M.", score: 10.5, matches: 5 },
-          { name: "Palermo S.", score: 5.0, matches: 5 },
-          { name: "Di Muro L.", score: 3.0, matches: 6 },
-          { name: "Acquaviva L.", score: 3.0, matches: 2 },
-          { name: "Barbarossa B.", score: 3.0, matches: 3 },
-          { name: "Del Vento L.", score: 2.0, matches: 6 },
-          { name: "Iacobone N.", score: -1.0, matches: 4 },
-          { name: "Di Fazio L.", score: 1.0, matches: 1 }
-        ];
-        
-        // Variabili di stato
-        let selectedPlayers = [];
-        let remainingBudget = 24;
-        
-        // Funzioni di utilità
-        function getInitials(name) {
-          return name.split(' ').map(word => word[0]).join('').toUpperCase();
-        }
-        
-        function showNotification(message, type = 'success') {
-          const notification = document.getElementById('notification');
-          notification.textContent = message;
-          notification.className = `notification ${type}`;
-          notification.classList.add('show');
-        
-          // Sposta la notifica nello schermo
-          setTimeout(() => {
-            notification.classList.remove('show'); // Nascondi
-          }, 3000);
-        }
-        
-        // Funzioni per la gestione della squadra
-        
-        function renderPlayers() {
-          const playersList = document.getElementById('playersList');
-          playersList.innerHTML = '';
-        
-          players.forEach((player, index) => {
-            const isSelected = selectedPlayers.some(p => p.name === player.name);
-            const canAfford = player.cost <= remainingBudget;
-            const isDisabled = !isSelected && (!canAfford || selectedPlayers.length >= 5);
-        
-            const playerCard = document.createElement('div');
-            playerCard.className = `player-card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`;
-            playerCard.onclick = () => togglePlayer(player);
-        
-            playerCard.innerHTML = `
-                <div class="player-info">
-                    <div class="player-name-container">
-                        <div class="player-name">${player.name}</div>
-                        <div style="font-size: 0.8rem; color: #888;">
-                            <button onclick="event.stopPropagation(); showPlayerDetails(${index});" style="background: none; border: none; color: var(--primary-color); cursor: pointer;">Dettagli</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="player-cost">${player.cost}</div>
-            `;
-        
-            playersList.appendChild(playerCard);
-          });
-        }
-        
-        // OLD renderPlayers hidden below for context
-        function renderPlayers_DISABLED_ORIGINAL() {
-          const playersList = document.getElementById('playersList');
-          playersList.innerHTML = '';
-        
-          players.forEach((player, index) => {
-            const isSelected = selectedPlayers.some(p => p.name === player.name);
-            const canAfford = player.cost <= remainingBudget;
-            const isDisabled = !isSelected && (!canAfford || selectedPlayers.length >= 5);
-        
-            const playerCard = document.createElement('div');
-            playerCard.className = `player-card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`;
-            playerCard.onclick = () => togglePlayer(player);
-        
-            // Aggiungi le caratteristiche del giocatore
-            let caratteristicheHTML = '<ul class="player-characteristics">';
-            player.caratteristiche.forEach(caratteristica => {
-              caratteristicheHTML += `<li>${caratteristica}</li>`;
-            });
-            caratteristicheHTML += '</ul>';
-        
-            playerCard.innerHTML = `
-                        <div class="player-info">
-                            <div>
-                                <div class="player-name">${player.name}</div>
-                                <div class="player-ruolo">${player.ruolo}</div>
-                                ${caratteristicheHTML}
-                            </div>
-                        </div>
-                        <div class="player-cost">${player.cost}</div>
-                    `;
-        
-            playersList.appendChild(playerCard);
-          });
-        }
-        
-        function togglePlayer(player) {
-          const isSelected = selectedPlayers.some(p => p.name === player.name);
-        
-          if (isSelected) {
-            selectedPlayers = selectedPlayers.filter(p => p.name !== player.name);
-            remainingBudget += player.cost;
-          } else {
-            if (selectedPlayers.length >= 5) {
-              showNotification('Hai già selezionato 5 giocatori!', 'error');
-              return;
-            }
-            if (player.cost > remainingBudget) {
-              showNotification('Budget insufficiente!', 'error');
-              return;
-            }
-            selectedPlayers.push(player);
-            remainingBudget -= player.cost;
-          }
-        
-          updateUI();
-        }
-        
-        function renderSelectedPlayers() {
-          const selectedPlayersDiv = document.getElementById('selectedPlayers');
-          selectedPlayersDiv.innerHTML = '';
-        
-          if (selectedPlayers.length === 0) {
-            selectedPlayersDiv.innerHTML = '<p style="text-align: center; color: #7f8c8d; font-style: italic;">Nessun giocatore selezionato</p>';
-            return;
-          }
-        
-          selectedPlayers.forEach(player => {
-            const playerDiv = document.createElement('div');
-            playerDiv.className = 'selected-player';
-            playerDiv.innerHTML = `
-                        <span><strong>${player.name}</strong> (${player.cost} crediti)</span>
-                        <button class="remove-btn" onclick="togglePlayer({name: '${player.name}', cost: ${player.cost}})">✕</button>
-                    `;
-            selectedPlayersDiv.appendChild(playerDiv);
-          });
-        }
-        
-        function resetTeam() {
-          selectedPlayers = [];
-          remainingBudget = 20;
-          updateUI();
-          showNotification('Squadra resettata!');
-        }
-        
-        function updateUI() {
-          document.getElementById('remainingBudget').textContent = remainingBudget;
-          document.getElementById('teamCount').textContent = selectedPlayers.length;
-        
-          const saveBtn = document.getElementById('saveBtn');
-          saveBtn.disabled = selectedPlayers.length !== 5;
-        
-          renderPlayers();
-          renderSelectedPlayers();
-        }
-        
-        function saveTeamImage() {
-          if (selectedPlayers.length !== 5) {
-            showNotification('Devi selezionare esattamente 5 giocatori!', 'error');
-            return;
-          }
-        
-          // Chiedi il nome della squadra PRIMA di creare l'immagine
-          const teamName = prompt('Inserisci il tuo cognome:', 'Cognome') || 'Cognome';
-        
-          const teamImage = document.getElementById('teamImage');
-          const formation = document.getElementById('formation');
-        
-          // Sostituisci la parte dove crei la formazione:
-          // Crea la formazione 1-2-2 (più compatta per mobile)
-          formation.innerHTML = '';
-        
-          // AGGIORNA IL TITOLO CON IL NOME SCELTO DALL'UTENTE
-          // AGGIORNA IL TITOLO CON IL NOME SCELTO DALL'UTENTE
-          const titleElement = teamImage.querySelector('h2');
-          titleElement.textContent = `TEAM ${teamName.toUpperCase()}`;
-          titleElement.style.fontFamily = "'Playfair Display', serif";
-          titleElement.style.color = '#ffffff';
-          titleElement.style.fontWeight = '700';
-          titleElement.style.fontSize = '1.8rem';
-          titleElement.style.padding = '12px 20px';
-          titleElement.style.borderRadius = '15px';
-          titleElement.style.marginBottom = '20px';
-          titleElement.style.textAlign = 'center';
-          titleElement.style.letterSpacing = '1px';
-          titleElement.style.textTransform = 'uppercase';
-          titleElement.style.background = 'rgba(255, 255, 255, 0.15)';
-          titleElement.style.border = '2px solid rgba(255, 255, 255, 0.3)';
-          titleElement.style.backdropFilter = 'blur(10px)';
-          titleElement.style.textShadow = '0 2px 4px rgba(0, 0, 0, 0.8), 0 4px 8px rgba(0, 0, 0, 0.4)';
-          // Rimuovi completamente gli effetti dorati
-          titleElement.style.webkitBackgroundClip = 'initial';
-          titleElement.style.webkitTextFillColor = 'initial';
-          titleElement.style.backgroundImage = 'none';
-        
-          const positions = [
-            { label: 'ATTACCANTE', players: 1 },
-            { label: 'CENTROCAMPO', players: 2 },
-            { label: 'DIFESA', players: 2 }
-          ];
-        
-          let playerIndex = 0;
-          positions.forEach(position => {
-            const row = document.createElement('div');
-            row.className = 'position-row';
-        
-            for (let i = 0; i < position.players; i++) {
-              const slot = document.createElement('div');
-              slot.className = 'player-slot';
-        
-              if (playerIndex < selectedPlayers.length) {
-                const player = selectedPlayers[playerIndex];
-                // Accorcia il nome se troppo lungo
-                const shortName = player.name;
-        
-                slot.innerHTML = `
-                                <div class="player-name">${shortName}</div>
-                                <div class="player-cost">${player.cost} crediti</div>
-                            `;
-                const nameDiv = slot.querySelector('.player-name');
-                if (nameDiv) {
-                  nameDiv.style.whiteSpace = 'normal';
-                  nameDiv.style.overflow = 'visible';
-                  nameDiv.style.textOverflow = 'unset';
-                  nameDiv.style.wordBreak = 'break-word';
-                  nameDiv.style.textAlign = 'center';
-                  nameDiv.style.lineHeight = '1.2';
-                }
-        
-                playerIndex++;
-              }
-        
-              row.appendChild(slot);
-            }
-        
-            formation.appendChild(row);
-          });
-        
-          const totalCost = selectedPlayers.reduce((sum, player) => sum + player.cost, 0);
-          document.getElementById('totalCostDisplay').textContent = totalCost;
-        
-          // Mostra temporaneamente l'elemento per la cattura
-          teamImage.style.display = 'block';
-          teamImage.style.position = 'fixed';
-          teamImage.style.top = '-9999px';
-          teamImage.style.left = '-9999px';
-        
-          // Aspetta un momento per il rendering, poi cattura con impostazioni ottimizzate
-          setTimeout(() => {
-            html2canvas(teamImage, {
-              backgroundColor: null,
-              scale: 2,
-              width: 400,
-              height: 600,
-              useCORS: true,
-              allowTaint: true,
-              logging: false,
-              scrollX: 0,
-              scrollY: 0,
-              windowWidth: 400,
-              windowHeight: 600
-            }).then(canvas => {
-              // Crea un canvas ottimizzato per mobile
-              const optimizedCanvas = document.createElement('canvas');
-              const ctx = optimizedCanvas.getContext('2d');
-        
-              // Dimensioni ottimali per mobile (formato verticale compatto)
-              optimizedCanvas.width = 400;
-              optimizedCanvas.height = 600;
-        
-              // Disegna l'immagine catturata sul canvas ottimizzato
-              ctx.drawImage(canvas, 0, 0, 400, 600);
-        
-              // Usa il nome scelto dall'utente per il file
-              const fileName = teamName.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '_SETTIMANA3.png';
-        
-              // Crea il link per il download
-              const link = document.createElement('a');
-              link.download = fileName;
-              link.href = optimizedCanvas.toDataURL('image/png', 0.9);
-        
-              // Prova prima il download diretto
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-        
-              // Fallback per mobile: mostra l'immagine in una nuova scheda
-              setTimeout(() => {
-                try {
-                  const dataURL = optimizedCanvas.toDataURL('image/png', 0.9);
-                  const newTab = window.open();
-                  if (newTab) {
-                    newTab.document.write(`
-                                        <html>
-                                            <head>
-                                                <title>Team ${teamName}</title>
-                                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                                <style>
-                                                    body {
-                                                        margin: 0;
-                                                        padding: 10px;
-                                                        background: #f0f4f8;
-                                                        text-align: center;
-                                                        font-family: Arial, sans-serif;
-                                                    }
-                                                    img {
-                                                        max-width: 100%;
-                                                        height: auto;
-                                                        border-radius: 10px;
-                                                        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                                                        margin: 10px 0;
-                                                    }
-                                                    .info {
-                                                        color: #666;
-                                                        font-size: 14px;
-                                                        margin: 15px 0;
-                                                        padding: 10px;
-                                                        background: white;
-                                                        border-radius: 8px;
-                                                    }
-                                                </style>
-                                            </head>
-                                            <body>
-                                                <h2>🏆 Team ${teamName}</h2>
-                                                <img src="${dataURL}" alt="Team ${teamName}">
-                                                <div class="info">
-                                                    📱 Su mobile: tieni premuto sull'immagine e seleziona "Salva immagine"<br>
-                                                    💻 Su desktop: fai click destro e "Salva immagine con nome"
-                                                </div>
-                                            </body>
-                                        </html>
-                                    `);
-                    newTab.document.close();
-                  }
-                } catch (error) {
-                  console.error('Errore nel creare la nuova scheda:', error);
-                  alert('Immagine creata! Prova a fare uno screenshot della formazione.');
-                }
-              }, 100);
-        
-              teamImage.style.display = 'none';
-              showNotification(`Immagine di "${teamName}" creata con successo! 🎉`);
-            }).catch(err => {
-              console.error('Errore nel salvare l\'immagine:', err);
-              showNotification('Errore nel salvare l\'immagine', 'error');
-              teamImage.style.display = 'none';
-            });
-          }, 500);
-        }
-        
-        // Funzioni per la gestione delle classifiche
-        function renderTeamRanking(rankingType = 'weekly') {
-          const teamRankingList = document.getElementById('teamRankingList');
-          teamRankingList.innerHTML = '';
-        
-          const rankingData = (rankingType === 'weekly') ? weeklyTeamRankingData : globalTeamRankingData;
-        
-          rankingData.forEach(team => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<span>${team.name}</span><span>${team.score}</span>`;
-            teamRankingList.appendChild(listItem);
-          });
-        }
-        
-        function renderPlayerRanking(sortBy = 'points', rankingType = 'weekly') {
-          const playerRankingList = document.getElementById('playerRankingList');
-          playerRankingList.innerHTML = '';
-        
-          const rankingData = (rankingType === 'weekly') ? weeklyPlayerRankingData : globalPlayerRankingData;
-        
-          let sortedPlayers = [...rankingData];
-          if (sortBy === 'points') {
-            sortedPlayers.sort((a, b) => b.score - a.score);
-          } else if (sortBy === 'average') {
-            sortedPlayers.sort((a, b) => (b.score / b.matches) - (a.score / a.matches));
-          }
-        
-          sortedPlayers.forEach(player => {
-            const listItem = document.createElement('li');
-        
-            if (rankingType === 'weekly') {
-              // Solo nome e punteggio
-              listItem.innerHTML = `<span>${player.name}</span><span>${player.score}</span>`;
-            } else {
-              // Nome, punteggio, partite e media
-              const average = (player.score / player.matches).toFixed(2);
-              listItem.innerHTML = `<span>${player.name}</span><span>${player.score} (${player.matches} partite, Media: ${average})</span>`;
-            }
-        
-            playerRankingList.appendChild(listItem);
-          });
-        }
-        
-        function sortPlayersRanking() {
-          const sortBy = document.getElementById('sort-by').value;
-          const rankingType = document.getElementById('ranking-type').value;
-          renderPlayerRanking(sortBy, rankingType);
-        }
-        
-        function renderRankings() {
-          const rankingType = document.getElementById('ranking-type').value;
-          renderTeamRanking(rankingType);
-          renderPlayerRanking('points', rankingType); // Default ordinamento per punti
-        }
-        
-        // Funzione per mostrare/nascondere le sezioni
-        function showSection(sectionId) {
-          const sections = document.querySelectorAll('.section');
-          sections.forEach(section => section.style.display = 'none');
-          document.getElementById(sectionId).style.display = 'block';
-        }
-        
-        // Funzione per chiudere il banner di lutto
-        function closeMourningBanner() {
-          document.getElementById('mourningBanner').style.display = 'none';
-        }
-        
-        // Inizializzazione
-        window.onload = function () {
-          renderPlayers();
-          renderSelectedPlayers();
-          renderRankings();
-          showSection('teamBuilder'); // Mostra la sezione "Team Builder" di default
-        };
-        
-        function showPlayerDetails(index) {
-          const player = players[index];
-          const caratteristiche = player.caratteristiche.map(c => `<li>${c}</li>`).join("");
-          const content = `
-            <strong>${player.name}</strong><br>
-            <em>Ruolo: ${player.ruolo}</em>
-            <ul style="margin-top: 10px; padding-left: 20px;">${caratteristiche}</ul>
-        `;
-          alert(content); // semplice alternativa modale. Può essere sostituita con una modale custom
-        }
-        
-        function showPlayerDetails(index) {
-          const player = players[index];
-          const caratteristiche = player.caratteristiche.map(c => `<li>${c}</li>`).join("");
-          const content = `
-            <h3>${player.name}</h3>
-            <p><strong>Ruolo:</strong> ${player.ruolo}</p>
-            <ul style="margin-top: 10px; padding-left: 20px;">${caratteristiche}</ul>
-        `;
-          document.getElementById("modalBody").innerHTML = content;
-          document.getElementById("playerModal").style.display = "flex";
-        }
-        
-        function closeModal() {
-          document.getElementById("playerModal").style.display = "none";
-        }
-    </script>
-      <div class="modal-overlay" id="playerModal" style="display:none;">
-        <div class="modal-content">
-          <span class="close-button" onclick="closeModal()">×</span>
-          <div id="modalBody"></div>
+      <div class="team-image" id="teamImage">
+        <h2>🏆 LA MIA SQUADRA</h2>
+        <div class="formation" id="formation"></div>
+        <div class="total-cost">
+          Costo Totale: <span id="totalCostDisplay">0</span> crediti
+        </div>
       </div>
     </div>
-  </body>
+    <div class="rankings-section section" id="rankings">
+      <h2>🏆 Classifiche</h2>
+      <div class="ranking-type-selection">
+        <label for="ranking-type">Tipo di Classifica:</label>
+        <select id="ranking-type" onchange="renderRankings()">
+          <option value="weekly">📅 Settimanale</option>
+          <option value="global">🌍 Globale</option>
+        </select>
+      </div>
+      <div class="rankings-container">
+        <div class="team-rankings">
+          <h3>🏅 Classifica Squadre</h3>
+          <ul class="ranking-list" id="teamRankingList"></ul>
+        </div>
+        <br /><br />
+        <div class="player-rankings">
+          <h3>⭐ Classifica Giocatori</h3>
+          <label for="sort-by">Ordina per:</label>
+          <select id="sort-by" onchange="sortPlayersRanking()">
+            <option value="points">🎯 Punteggio</option>
+            <option value="average">📊 Media</option>
+          </select>
+          <ul class="ranking-list" id="playerRankingList"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="notification" id="notification"></div>
+  <footer>
+    © 2025 Fantasy Calcio a 5 - Bob Difensore 7 ⚽
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    // Dati dei giocatori
+    const players = [
+      { name: "Luigi Pedone", cost: 9, ruolo: "Difensore", caratteristiche: ["Velocità", "Riflessi", "Forza"] },
+      { name: "Gianni Destino", cost: 8, ruolo: "Centrocampista", caratteristiche: ["Visione", "Passaggio", "Dribbling"] },
+      { name: "Giuseppe Acquaviva", cost: 7, ruolo: "Attaccante", caratteristiche: ["Dribbling", "Ambidestro", "Tiro"] },
+      { name: "Francesco Matarrese", cost: 7, ruolo: "Attaccante", caratteristiche: ["Finalizzazione", "Piazzamento", "Controllo"] },
+      { name: "Domenico Patruno", cost: 6, ruolo: "Centrocampista", caratteristiche: ["Tecnica", "Passaggio", "Tiro"] },
+      { name: "Mariano Di Nicoli", cost: 5, ruolo: "Attaccante", caratteristiche: ["Velocità", "Resilienza", "Contrasto"] },
+      { name: "Simone Palermo", cost: 3, ruolo: "Difensore", caratteristiche: ["Presenza", "Costanza", "Contrasto"] },
+      { name: "Luca Di Muro", cost: 3, ruolo: "Difensore", caratteristiche: ["Forza", "Colpo di testa", "Contrasto"] },
+      { name: "Biagio Barbarossa", cost: 3, ruolo: "Difensore", caratteristiche: ["Forza", "Contrasto", "Affidabilità"] },
+      //{ name: "Leo Acquaviva", cost: 3, ruolo: "Difensore", caratteristiche: ["Propensione al tiro", "Contrasto"] },
+      //{ name: "Nicola Iacobone", cost: 2, ruolo: "Attaccante", caratteristiche: ["Pressing alto", "Qualità prezzo"] },
+      { name: "Lucabob Del Vento", cost: 2, ruolo: "Difensore", caratteristiche: ["Piazzamento", "Passaggio", "Tiro dalla distanza"] }
+    ];
+
+    // Dati delle Classifiche (iniziali)
+    const weeklyTeamRankingData = [
+      { name: "DI NICOLI", score: 13.0 },
+      { name: "PEDONE", score: 13.0 },
+      { name: "PATRUNO", score: 11.5 },
+      { name: "PALERMO", score: 11.5 },
+      { name: "MATARRESE", score: 11.0 },
+      { name: "DEL VENTO", score: 10.5 },
+      { name: "ACQUAVIVA", score: 8.5 },
+      { name: "BARBAROSSA", score: 8.5 },
+      { name: "DESTINO", score: 8.0 },
+      { name: "DI MURO", score: 8.0 },
+      { name: "IACOBONE", score: 0.0 }
+    ];
+
+    const globalTeamRankingData = [
+      { name: "DI NICOLI", score: 32.0 },
+      { name: "PEDONE", score: 31.0 },
+      { name: "MATARRESE", score: 28.5 },
+      { name: "PALERMO", score: 28.5 },
+      { name: "DESTINO", score: 28.0 },
+      { name: "ACQUAVIVA", score: 26.5 },
+      { name: "PATRUNO", score: 26.0 },
+      { name: "DI MURO", score: 25.5 },
+      { name: "DEL VENTO", score: 25.0 },
+      { name: "BARBAROSSA", score: 24.0 },
+      { name: "IACOBONE", score: 12.0 }
+    ];
+
+    const weeklyPlayerRankingData = [
+      { name: "Matarrese F.", score: 6.0, matches: 1 },
+      { name: "Pedone L.", score: 3.0, matches: 1 },
+      { name: "Acquaviva G.", score: 2.5, matches: 1 },
+      { name: "Destino G.", score: 2.5, matches: 1 },
+      { name: "Patruno D.", score: 2.0, matches: 1 },
+      { name: "Di Nicoli M.", score: 1.5, matches: 1 },
+      { name: "Barbarossa B.", score: 1.5, matches: 1 },
+      { name: "Del Vento L.", score: 1.5, matches: 1 },
+      { name: "Palermo S.", score: 0.0, matches: 1 },
+      { name: "Di Muro L.", score: -1.5, matches: 1 }
+    ];
+
+    const globalPlayerRankingData = [
+      { name: "Pedone L.", score: 22.0, matches: 5 },
+      { name: "Matarrese F.", score: 20.0, matches: 5 },
+      { name: "Destino G.", score: 21.5, matches: 6 },
+      { name: "Acquaviva G.", score: 15.5, matches: 6 },
+      { name: "Patruno D.", score: 14.5, matches: 6 },
+      { name: "Di Nicoli M.", score: 10.5, matches: 5 },
+      { name: "Palermo S.", score: 5.0, matches: 5 },
+      { name: "Di Muro L.", score: 3.0, matches: 6 },
+      { name: "Acquaviva L.", score: 3.0, matches: 2 },
+      { name: "Barbarossa B.", score: 3.0, matches: 3 },
+      { name: "Del Vento L.", score: 2.0, matches: 6 },
+      { name: "Iacobone N.", score: -1.0, matches: 4 },
+      { name: "Di Fazio L.", score: 1.0, matches: 1 }
+    ];
+
+    // Variabili di stato
+    let selectedPlayers = [];
+    let remainingBudget = 24;
+
+    // Funzioni di utilità
+    function getInitials(name) {
+      return name.split(' ').map(word => word[0]).join('').toUpperCase();
+    }
+
+    function showNotification(message, type = 'success') {
+      const notification = document.getElementById('notification');
+      notification.textContent = message;
+      notification.className = `notification ${type}`;
+      notification.classList.add('show');
+
+      // Sposta la notifica nello schermo
+      setTimeout(() => {
+        notification.classList.remove('show'); // Nascondi
+      }, 3000);
+    }
+
+    // Funzioni per la gestione della squadra
+
+    function renderPlayers() {
+      const playersList = document.getElementById('playersList');
+      playersList.innerHTML = '';
+
+      players.forEach((player, index) => {
+        const isSelected = selectedPlayers.some(p => p.name === player.name);
+        const canAfford = player.cost <= remainingBudget;
+        const isDisabled = !isSelected && (!canAfford || selectedPlayers.length >= 5);
+
+        const playerCard = document.createElement('div');
+        playerCard.className = `player-card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`;
+        playerCard.onclick = () => togglePlayer(player);
+
+        playerCard.innerHTML = `
+            <div class="player-info">
+                <div class="player-name-container">
+                    <div class="player-name">${player.name}</div>
+                    <div style="font-size: 0.8rem; color: #888;">
+                        <button onclick="event.stopPropagation(); showPlayerDetails(${index});" style="background: none; border: none; color: var(--primary-color); cursor: pointer;">Dettagli</button>
+                    </div>
+                </div>
+            </div>
+            <div class="player-cost">${player.cost}</div>
+        `;
+
+        playersList.appendChild(playerCard);
+      });
+    }
+
+    // OLD renderPlayers hidden below for context
+    function renderPlayers_DISABLED_ORIGINAL() {
+      const playersList = document.getElementById('playersList');
+      playersList.innerHTML = '';
+
+      players.forEach((player, index) => {
+        const isSelected = selectedPlayers.some(p => p.name === player.name);
+        const canAfford = player.cost <= remainingBudget;
+        const isDisabled = !isSelected && (!canAfford || selectedPlayers.length >= 5);
+
+        const playerCard = document.createElement('div');
+        playerCard.className = `player-card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`;
+        playerCard.onclick = () => togglePlayer(player);
+
+        // Aggiungi le caratteristiche del giocatore
+        let caratteristicheHTML = '<ul class="player-characteristics">';
+        player.caratteristiche.forEach(caratteristica => {
+          caratteristicheHTML += `<li>${caratteristica}</li>`;
+        });
+        caratteristicheHTML += '</ul>';
+
+        playerCard.innerHTML = `
+                    <div class="player-info">
+                        <div>
+                            <div class="player-name">${player.name}</div>
+                            <div class="player-ruolo">${player.ruolo}</div>
+                            ${caratteristicheHTML}
+                        </div>
+                    </div>
+                    <div class="player-cost">${player.cost}</div>
+                `;
+
+        playersList.appendChild(playerCard);
+      });
+    }
+
+    function togglePlayer(player) {
+      const isSelected = selectedPlayers.some(p => p.name === player.name);
+
+      if (isSelected) {
+        selectedPlayers = selectedPlayers.filter(p => p.name !== player.name);
+        remainingBudget += player.cost;
+      } else {
+        if (selectedPlayers.length >= 5) {
+          showNotification('Hai già selezionato 5 giocatori!', 'error');
+          return;
+        }
+        if (player.cost > remainingBudget) {
+          showNotification('Budget insufficiente!', 'error');
+          return;
+        }
+        selectedPlayers.push(player);
+        remainingBudget -= player.cost;
+      }
+
+      updateUI();
+    }
+
+    function renderSelectedPlayers() {
+      const selectedPlayersDiv = document.getElementById('selectedPlayers');
+      selectedPlayersDiv.innerHTML = '';
+
+      if (selectedPlayers.length === 0) {
+        selectedPlayersDiv.innerHTML = '<p style="text-align: center; color: #7f8c8d; font-style: italic;">Nessun giocatore selezionato</p>';
+        return;
+      }
+
+      selectedPlayers.forEach(player => {
+        const playerDiv = document.createElement('div');
+        playerDiv.className = 'selected-player';
+        playerDiv.innerHTML = `
+                    <span><strong>${player.name}</strong> (${player.cost} crediti)</span>
+                    <button class="remove-btn" onclick="togglePlayer({name: '${player.name}', cost: ${player.cost}})">✕</button>
+                `;
+        selectedPlayersDiv.appendChild(playerDiv);
+      });
+    }
+
+    function resetTeam() {
+      selectedPlayers = [];
+      remainingBudget = 20;
+      updateUI();
+      showNotification('Squadra resettata!');
+    }
+
+    function updateUI() {
+      document.getElementById('remainingBudget').textContent = remainingBudget;
+      document.getElementById('teamCount').textContent = selectedPlayers.length;
+
+      const saveBtn = document.getElementById('saveBtn');
+      saveBtn.disabled = selectedPlayers.length !== 5;
+
+      renderPlayers();
+      renderSelectedPlayers();
+    }
+
+    function saveTeamImage() {
+      if (selectedPlayers.length !== 5) {
+        showNotification('Devi selezionare esattamente 5 giocatori!', 'error');
+        return;
+      }
+
+      // Chiedi il nome della squadra PRIMA di creare l'immagine
+      const teamName = prompt('Inserisci il tuo cognome:', 'Cognome') || 'Cognome';
+
+      const teamImage = document.getElementById('teamImage');
+      const formation = document.getElementById('formation');
+
+      // Sostituisci la parte dove crei la formazione:
+      // Crea la formazione 1-2-2 (più compatta per mobile)
+      formation.innerHTML = '';
+
+      // AGGIORNA IL TITOLO CON IL NOME SCELTO DALL'UTENTE
+      // AGGIORNA IL TITOLO CON IL NOME SCELTO DALL'UTENTE
+      const titleElement = teamImage.querySelector('h2');
+      titleElement.textContent = `TEAM ${teamName.toUpperCase()}`;
+      titleElement.style.fontFamily = "'Playfair Display', serif";
+      titleElement.style.color = '#ffffff';
+      titleElement.style.fontWeight = '700';
+      titleElement.style.fontSize = '1.8rem';
+      titleElement.style.padding = '12px 20px';
+      titleElement.style.borderRadius = '15px';
+      titleElement.style.marginBottom = '20px';
+      titleElement.style.textAlign = 'center';
+      titleElement.style.letterSpacing = '1px';
+      titleElement.style.textTransform = 'uppercase';
+      titleElement.style.background = 'rgba(255, 255, 255, 0.15)';
+      titleElement.style.border = '2px solid rgba(255, 255, 255, 0.3)';
+      titleElement.style.backdropFilter = 'blur(10px)';
+      titleElement.style.textShadow = '0 2px 4px rgba(0, 0, 0, 0.8), 0 4px 8px rgba(0, 0, 0, 0.4)';
+      // Rimuovi completamente gli effetti dorati
+      titleElement.style.webkitBackgroundClip = 'initial';
+      titleElement.style.webkitTextFillColor = 'initial';
+      titleElement.style.backgroundImage = 'none';
+
+      const positions = [
+        { label: 'ATTACCANTE', players: 1 },
+        { label: 'CENTROCAMPO', players: 2 },
+        { label: 'DIFESA', players: 2 }
+      ];
+
+      let playerIndex = 0;
+      positions.forEach(position => {
+        const row = document.createElement('div');
+        row.className = 'position-row';
+
+        for (let i = 0; i < position.players; i++) {
+          const slot = document.createElement('div');
+          slot.className = 'player-slot';
+
+          if (playerIndex < selectedPlayers.length) {
+            const player = selectedPlayers[playerIndex];
+            // Accorcia il nome se troppo lungo
+            const shortName = player.name;
+
+            slot.innerHTML = `
+                            <div class="player-name">${shortName}</div>
+                            <div class="player-cost">${player.cost} crediti</div>
+                        `;
+            const nameDiv = slot.querySelector('.player-name');
+            if (nameDiv) {
+              nameDiv.style.whiteSpace = 'normal';
+              nameDiv.style.overflow = 'visible';
+              nameDiv.style.textOverflow = 'unset';
+              nameDiv.style.wordBreak = 'break-word';
+              nameDiv.style.textAlign = 'center';
+              nameDiv.style.lineHeight = '1.2';
+            }
+
+            playerIndex++;
+          }
+
+          row.appendChild(slot);
+        }
+
+        formation.appendChild(row);
+      });
+
+      const totalCost = selectedPlayers.reduce((sum, player) => sum + player.cost, 0);
+      document.getElementById('totalCostDisplay').textContent = totalCost;
+
+      // Mostra temporaneamente l'elemento per la cattura
+      teamImage.style.display = 'block';
+      teamImage.style.position = 'fixed';
+      teamImage.style.top = '-9999px';
+      teamImage.style.left = '-9999px';
+
+      // Aspetta un momento per il rendering, poi cattura con impostazioni ottimizzate
+      setTimeout(() => {
+        html2canvas(teamImage, {
+          backgroundColor: null,
+          scale: 2,
+          width: 400,
+          height: 600,
+          useCORS: true,
+          allowTaint: true,
+          logging: false,
+          scrollX: 0,
+          scrollY: 0,
+          windowWidth: 400,
+          windowHeight: 600
+        }).then(canvas => {
+          // Crea un canvas ottimizzato per mobile
+          const optimizedCanvas = document.createElement('canvas');
+          const ctx = optimizedCanvas.getContext('2d');
+
+          // Dimensioni ottimali per mobile (formato verticale compatto)
+          optimizedCanvas.width = 400;
+          optimizedCanvas.height = 600;
+
+          // Disegna l'immagine catturata sul canvas ottimizzato
+          ctx.drawImage(canvas, 0, 0, 400, 600);
+
+          // Usa il nome scelto dall'utente per il file
+          const fileName = teamName.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '_SETTIMANA3.png';
+
+          // Crea il link per il download
+          const link = document.createElement('a');
+          link.download = fileName;
+          link.href = optimizedCanvas.toDataURL('image/png', 0.9);
+
+          // Prova prima il download diretto
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+
+          // Fallback per mobile: mostra l'immagine in una nuova scheda
+          setTimeout(() => {
+            try {
+              const dataURL = optimizedCanvas.toDataURL('image/png', 0.9);
+              const newTab = window.open();
+              if (newTab) {
+                newTab.document.write(`
+                                    <html>
+                                        <head>
+                                            <title>Team ${teamName}</title>
+                                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                            <style>
+                                                body {
+                                                    margin: 0;
+                                                    padding: 10px;
+                                                    background: #f0f4f8;
+                                                    text-align: center;
+                                                    font-family: Arial, sans-serif;
+                                                }
+                                                img {
+                                                    max-width: 100%;
+                                                    height: auto;
+                                                    border-radius: 10px;
+                                                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                                                    margin: 10px 0;
+                                                }
+                                                .info {
+                                                    color: #666;
+                                                    font-size: 14px;
+                                                    margin: 15px 0;
+                                                    padding: 10px;
+                                                    background: white;
+                                                    border-radius: 8px;
+                                                }
+                                            </style>
+                                        </head>
+                                        <body>
+                                            <h2>🏆 Team ${teamName}</h2>
+                                            <img src="${dataURL}" alt="Team ${teamName}">
+                                            <div class="info">
+                                                📱 Su mobile: tieni premuto sull'immagine e seleziona "Salva immagine"<br>
+                                                💻 Su desktop: fai click destro e "Salva immagine con nome"
+                                            </div>
+                                        </body>
+                                    </html>
+                                `);
+                newTab.document.close();
+              }
+            } catch (error) {
+              console.error('Errore nel creare la nuova scheda:', error);
+              alert('Immagine creata! Prova a fare uno screenshot della formazione.');
+            }
+          }, 100);
+
+          teamImage.style.display = 'none';
+          showNotification(`Immagine di "${teamName}" creata con successo! 🎉`);
+        }).catch(err => {
+          console.error('Errore nel salvare l\'immagine:', err);
+          showNotification('Errore nel salvare l\'immagine', 'error');
+          teamImage.style.display = 'none';
+        });
+      }, 500);
+    }
+
+    // Funzioni per la gestione delle classifiche
+    function renderTeamRanking(rankingType = 'weekly') {
+      const teamRankingList = document.getElementById('teamRankingList');
+      teamRankingList.innerHTML = '';
+
+      const rankingData = (rankingType === 'weekly') ? weeklyTeamRankingData : globalTeamRankingData;
+
+      rankingData.forEach(team => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<span>${team.name}</span><span>${team.score}</span>`;
+        teamRankingList.appendChild(listItem);
+      });
+    }
+
+    function renderPlayerRanking(sortBy = 'points', rankingType = 'weekly') {
+      const playerRankingList = document.getElementById('playerRankingList');
+      playerRankingList.innerHTML = '';
+
+      const rankingData = (rankingType === 'weekly') ? weeklyPlayerRankingData : globalPlayerRankingData;
+
+      let sortedPlayers = [...rankingData];
+      if (sortBy === 'points') {
+        sortedPlayers.sort((a, b) => b.score - a.score);
+      } else if (sortBy === 'average') {
+        sortedPlayers.sort((a, b) => (b.score / b.matches) - (a.score / a.matches));
+      }
+
+      sortedPlayers.forEach(player => {
+        const listItem = document.createElement('li');
+
+        if (rankingType === 'weekly') {
+          // Solo nome e punteggio
+          listItem.innerHTML = `<span>${player.name}</span><span>${player.score}</span>`;
+        } else {
+          // Nome, punteggio, partite e media
+          const average = (player.score / player.matches).toFixed(2);
+          listItem.innerHTML = `<span>${player.name}</span><span>${player.score} (${player.matches} partite, Media: ${average})</span>`;
+        }
+
+        playerRankingList.appendChild(listItem);
+      });
+    }
+
+    function sortPlayersRanking() {
+      const sortBy = document.getElementById('sort-by').value;
+      const rankingType = document.getElementById('ranking-type').value;
+      renderPlayerRanking(sortBy, rankingType);
+    }
+
+    function renderRankings() {
+      const rankingType = document.getElementById('ranking-type').value;
+      renderTeamRanking(rankingType);
+      renderPlayerRanking('points', rankingType); // Default ordinamento per punti
+    }
+
+    // Funzione per mostrare/nascondere le sezioni
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => section.style.display = 'none');
+      document.getElementById(sectionId).style.display = 'block';
+    }
+
+    // Funzione per chiudere il banner di auguri
+    function closeBirthdayBanner() {
+      document.getElementById('birthdayBanner').style.display = 'none';
+    }
+
+    // Inizializzazione
+    window.onload = function () {
+      renderPlayers();
+      renderSelectedPlayers();
+      renderRankings();
+      showSection('teamBuilder'); // Mostra la sezione "Team Builder" di default
+    };
+
+    function showPlayerDetails(index) {
+      const player = players[index];
+      const caratteristiche = player.caratteristiche.map(c => `<li>${c}</li>`).join("");
+      const content = `
+        <strong>${player.name}</strong><br>
+        <em>Ruolo: ${player.ruolo}</em>
+        <ul style="margin-top: 10px; padding-left: 20px;">${caratteristiche}</ul>
+    `;
+      alert(content); // semplice alternativa modale. Può essere sostituita con una modale custom
+    }
+
+    function showPlayerDetails(index) {
+      const player = players[index];
+      const caratteristiche = player.caratteristiche.map(c => `<li>${c}</li>`).join("");
+      const content = `
+        <h3>${player.name}</h3>
+        <p><strong>Ruolo:</strong> ${player.ruolo}</p>
+        <ul style="margin-top: 10px; padding-left: 20px;">${caratteristiche}</ul>
+    `;
+      document.getElementById("modalBody").innerHTML = content;
+      document.getElementById("playerModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("playerModal").style.display = "none";
+    }
+  </script>
+
+  <div class="modal-overlay" id="playerModal" style="display:none;">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeModal()">×</span>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+</body>
+
 </html>
