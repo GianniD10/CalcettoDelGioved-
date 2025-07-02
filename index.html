@@ -1160,22 +1160,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>  
   <script>  
     // Dati dei giocatori  
-    const players = [              
-      { name: "Dario Fiorentino", cost: 9, ruolo: "Attaccante", caratteristiche: ["Tiro", "Ambidestro", "Tecnica"] },
+    const players = [  
+      { name: "Dario Fiorentino", cost: 9, ruolo: "Attaccante", caratteristiche: ["Tiro", "Ambidestro", "Tecnica"] },  
       // { name: "Luigi Pedone", cost: 9, ruolo: "Difensore", caratteristiche: ["Velocità", "Riflessi", "Forza"] },  
       { name: "Francesco Matarrese", cost: 8, ruolo: "Attaccante", caratteristiche: ["Finalizzazione", "Piazzamento", "Controllo"] },  
       { name: "Gianni Destino", cost: 7.5, ruolo: "Centrocampista", caratteristiche: ["Visione", "Passaggio", "Dribbling"] },  
       { name: "Giuseppe Acquaviva", cost: 6, ruolo: "Attaccante", caratteristiche: ["Dribbling", "Ambidestro", "Tiro"] },  
       { name: "Domenico Patruno", cost: 4.5, ruolo: "Centrocampista", caratteristiche: ["Tecnica", "Passaggio", "Tiro"] },  
       { name: "Mariano Di Nicoli", cost: 5.5, ruolo: "Attaccante", caratteristiche: ["Velocità", "Resilienza", "Contrasto"] },  
-      { name: "Biagio Barbarossa", cost: 3.5, ruolo: "Difensore", caratteristiche: ["Forza", "Contrasto", "Affidabilità"] },
-      { name: "Michele D'Ambrosio", cost: 3, ruolo: "Difensore", caratteristiche: ["Contrasto", "Lettura difensiva", "Forza"] },
-      { name: "Simone Palermo", cost: 3, ruolo: "Difensore", caratteristiche: ["Presenza", "Costanza", "Contrasto"] },
-      //{ name: "Leo Acquaviva", cost: 3, ruolo: "Difensore", caratteristiche: ["Propensione al tiro", "Contrasto"] },    
+      { name: "Biagio Barbarossa", cost: 3.5, ruolo: "Difensore", caratteristiche: ["Forza", "Contrasto", "Affidabilità"] },  
+      { name: "Michele D'Ambrosio", cost: 3, ruolo: "Difensore", caratteristiche: ["Contrasto", "Lettura difensiva", "Forza"] },  
+      { name: "Simone Palermo", cost: 3, ruolo: "Difensore", caratteristiche: ["Presenza", "Costanza", "Contrasto"] },  
+      //{ name: "Leo Acquaviva", cost: 3, ruolo: "Difensore", caratteristiche: ["Propensione al tiro", "Contrasto"] },  
       { name: "Luca Di Muro", cost: 2.5, ruolo: "Difensore", caratteristiche: ["Forza", "Colpo di testa", "Contrasto"] },  
-      { name: "Lucabob Del Vento", cost: 2.5, ruolo: "Difensore", caratteristiche: ["Piazzamento", "Passaggio", "Tiro dalla distanza"] }
+      { name: "Lucabob Del Vento", cost: 2.5, ruolo: "Difensore", caratteristiche: ["Piazzamento", "Passaggio", "Tiro dalla distanza"] },  
       { name: "Nicola Iacobone", cost: 2, ruolo: "Difensore", caratteristiche: ["Pressing alto", "Qualità prezzo"] },  
-    ];  
+    ];    
   
     const weeklyTeamRankingData = [  
       { name: "BARBAROSSA", score: 11.5 },  
@@ -1298,7 +1298,7 @@
   
         const playerCard = document.createElement('div');  
         playerCard.className = `player-card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`;  
-        playerCard.onclick = () => (player);  
+        playerCard.onclick = () => togglePlayer(player);  
   
         // Aggiungi le caratteristiche del giocatore  
         let caratteristicheHTML = '<ul class="player-characteristics">';  
@@ -1324,7 +1324,7 @@
   
     function togglePlayer(player) {  
       const isSelected = selectedPlayers.some(p => p.name === player.name);  
-      
+  
       if (isSelected) {  
         selectedPlayers = selectedPlayers.filter(p => p.name !== player.name);  
         remainingBudget += player.cost;  
@@ -1340,28 +1340,29 @@
         selectedPlayers.push(player);  
         remainingBudget -= player.cost;  
       }  
-      
+  
       updateUI();  
     }  
+  
     function renderSelectedPlayers() {  
       const selectedPlayersDiv = document.getElementById('selectedPlayers');  
       selectedPlayersDiv.innerHTML = '';  
-      
+  
       if (selectedPlayers.length === 0) {  
         selectedPlayersDiv.innerHTML = '<p style="text-align: center; color: #7f8c8d; font-style: italic;">Nessun giocatore selezionato</p>';  
         return;  
       }  
-      
+  
       selectedPlayers.forEach(player => {  
         const playerDiv = document.createElement('div');  
         playerDiv.className = 'selected-player';  
         playerDiv.innerHTML = `  
-          <span><strong>${player.name}</strong> (${player.cost} crediti)</span>  
-          <button class="remove-btn" onclick="togglePlayer({name: '${player.name}', cost: ${player.cost}})">✕</button>  
-        `;  
+                    <span><strong>${player.name}</strong> (${player.cost} crediti)</span>  
+                    <button class="remove-btn" onclick="togglePlayer({name: '${player.name}', cost: ${player.cost}})">✕</button>  
+                `;  
         selectedPlayersDiv.appendChild(playerDiv);  
       });  
-    }    
+    }  
   
     function resetTeam() {  
       selectedPlayers = [];  
