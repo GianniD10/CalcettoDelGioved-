@@ -1100,7 +1100,7 @@
         <div class="team-section">  
           <div class="budget-info">  
             <h3>💰 Budget Rimanente</h3>  
-            <div class="budget-display"><span id="remainingBudget">27</span> crediti</div>  
+            <div class="budget-display"><span id="remainingBudget">22</span> crediti</div>  
           </div>  
           <div class="team-list">  
             <h3>🏆 La Tua Squadra <span style="white-space: nowrap;">(<span id="teamCount">0</span>/5)</span></h3>  
@@ -1162,23 +1162,23 @@
     // Dati dei giocatori  
     const players = [  
       // { name: "Dario Fiorentino", cost: 9, ruolo: "Attaccante", caratteristiche: ["Tiro", "Ambidestro", "Tecnica"] },  
-      { name: "Luigi Pedone", cost: 9, ruolo: "Difensore", caratteristiche: ["Velocità", "Riflessi", "Forza"] },  
-      { name: "Francesco Matarrese", cost: 8.5, ruolo: "Attaccante", caratteristiche: ["Finalizzazione", "Piazzamento", "Controllo"] },  
-      { name: "Gianni Destino", cost: 7.5, ruolo: "Centrocampista", caratteristiche: ["Visione", "Passaggio", "Dribbling"] },  
-      { name: "Giuseppe Acquaviva", cost: 6.5, ruolo: "Attaccante", caratteristiche: ["Dribbling", "Ambidestro", "Tiro"] },    
-      { name: "Mariano Di Nicoli", cost: 6.5, ruolo: "Attaccante", caratteristiche: ["Velocità", "Resilienza", "Contrasto"] },
+      //{ name: "Luigi Pedone", cost: 9, ruolo: "Difensore", caratteristiche: ["Velocità", "Riflessi", "Forza"] },  
+      { name: "Francesco Matarrese", cost: 7.5, ruolo: "Attaccante", caratteristiche: ["Finalizzazione", "Piazzamento", "Controllo"] },  
+      { name: "Gianni Destino", cost: 6, ruolo: "Centrocampista", caratteristiche: ["Visione", "Passaggio", "Dribbling"] },  
+      { name: "Giuseppe Acquaviva", cost: 6, ruolo: "Attaccante", caratteristiche: ["Dribbling", "Ambidestro", "Tiro"] },    
+      { name: "Mariano Di Nicoli", cost: 5.5, ruolo: "Attaccante", caratteristiche: ["Velocità", "Resilienza", "Contrasto"] },
       // { name: "Jacopo Gambarrota", cost: 5, ruolo: "Attaccante", caratteristiche: ["Posizionamento Attacco"] },
-      { name: "Domenico Patruno", cost: 5, ruolo: "Centrocampista", caratteristiche: ["Tecnica", "Passaggio", "Tiro"] },  
+      { name: "Domenico Patruno", cost: 4.5, ruolo: "Centrocampista", caratteristiche: ["Tecnica", "Passaggio", "Tiro"] },  
       // { name: "Michele D'Ambrosio", cost: 3, ruolo: "Difensore", caratteristiche: ["Contrasto", "Lettura difensiva", "Forza"] },  
-      { name: "Simone Palermo", cost: 5, ruolo: "Difensore", caratteristiche: ["Presenza", "Costanza", "Contrasto"] },  
+      { name: "Simone Palermo", cost: 4, ruolo: "Difensore", caratteristiche: ["Presenza", "Costanza", "Contrasto"] },  
       //{ name: "Leo Acquaviva", cost: 5, ruolo: "Difensore", caratteristiche: ["Propensione al tiro", "Contrasto"] },
-      //{ name: "Biagio Barbarossa", cost: 4.5, ruolo: "Difensore", caratteristiche: ["Forza", "Contrasto", "Affidabilità"] },
+      { name: "Biagio Barbarossa", cost: 4, ruolo: "Difensore", caratteristiche: ["Forza", "Contrasto", "Affidabilità"] },
       //{ name: "Gabriele Del Vento", cost: 3, ruolo: "Portiere", caratteristiche: ["1 vs 1", "Esperienza"] },
       //{ name: "Gabriele Sciannamea", cost: 3, ruolo: "Portiere", caratteristiche: ["Presenza", "Tuffo"] },
-      { name: "Luca Di Muro", cost: 4, ruolo: "Difensore", caratteristiche: ["Forza", "Colpo di testa", "Contrasto"] },  
-      { name: "Lucabob Del Vento", cost: 4, ruolo: "Difensore", caratteristiche: ["Piazzamento", "Passaggio", "Tiro dalla distanza"] },  
-      { name: "Nicola Iacobone", cost: 3, ruolo: "Difensore", caratteristiche: ["Pressing alto", "Qualità prezzo"] }, 
-      //{ name: "Luigi Del Vento", cost: 2, ruolo: "Difensore", caratteristiche: ["Movenze alla Maldini"] }
+      { name: "Luca Di Muro", cost: 3, ruolo: "Difensore", caratteristiche: ["Forza", "Colpo di testa", "Contrasto"] },  
+      { name: "Lucabob Del Vento", cost: 3, ruolo: "Difensore", caratteristiche: ["Piazzamento", "Passaggio", "Tiro dalla distanza"] },  
+      //{ name: "Nicola Iacobone", cost: 3, ruolo: "Difensore", caratteristiche: ["Pressing alto", "Qualità prezzo"] }, 
+      { name: "Luigi Del Vento", cost: 2, ruolo: "Difensore", caratteristiche: ["Movenze alla Maldini"] }
     ];    
   
     const weeklyTeamRankingData = [
@@ -1246,7 +1246,7 @@
   
     // Variabili di stato  
     let selectedPlayers = [];  
-    let remainingBudget = 27;  
+    let remainingBudget = 22;  
   
     // Funzioni di utilità  
     function getInitials(name) {  
@@ -1376,7 +1376,7 @@
   
     function resetTeam() {  
       selectedPlayers = [];  
-      remainingBudget = 27;  
+      remainingBudget = 22;  
       updateUI();  
       showNotification('Squadra resettata!');  
     }  
