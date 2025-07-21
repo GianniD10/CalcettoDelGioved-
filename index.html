@@ -1006,6 +1006,10 @@
       align-items: center;  
       z-index: 2000;  
     }  
+    /* Specific z-index for memorial modal to ensure it's on top */
+    #memorialModal {
+        z-index: 3001;
+    }
   
     .modal-content {  
       background: white;  
@@ -1017,6 +1021,11 @@
       position: relative;  
       animation: fadeIn 0.3s ease-out;  
     }  
+    /* Specific max-width and padding for memorial modal content */
+    #memorialModal .modal-content {
+        max-width: 500px; /* Increased max-width for the image */
+        padding: 15px; /* Reduced padding as the image itself has content/borders */
+    }
   
     .close-button {  
       position: absolute;  
@@ -1653,24 +1662,21 @@
       document.getElementById('birthdayBanner').style.display = 'none';  
     }  
   
+    // Funzione per chiudere il modal commemorativo
+    function closeMemorialModal() {
+      document.getElementById('memorialModal').style.display = 'none';
+    }
+
     // Inizializzazione  
     window.onload = function () {  
+      // Mostra il modal commemorativo all'avvio
+      document.getElementById('memorialModal').style.display = 'flex'; // Assicurati che sia visibile all'inizio
+      
       renderPlayers();  
       renderSelectedPlayers();  
       renderRankings();  
-      showSection('teamBuilder'); // Mostra la sezione "Team Builder" di default  
+      showSection('teamBuilder'); // Mostra la sezione "Team Builder" di default dopo che il modal potrebbe essere stato chiuso
     };  
-  
-    function showPlayerDetails(index) {  
-      const player = players[index];  
-      const caratteristiche = player.caratteristiche.map(c => `<li>${c}</li>`).join("");  
-      const content = `  
-        <strong>${player.name}</strong><br>  
-        <em>Ruolo: ${player.ruolo}</em>  
-        <ul style="margin-top: 10px; padding-left: 20px;">${caratteristiche}</ul>  
-    `;  
-      alert(content); // semplice alternativa modale. Può essere sostituita con una modale custom  
-    }  
   
     function showPlayerDetails(index) {  
       const player = players[index];  
@@ -1695,7 +1701,14 @@
       <div id="modalBody"></div>  
     </div>  
   </div>  
+
+  <div class="modal-overlay" id="memorialModal" style="display: flex; z-index: 3001;"> 
+    <div class="modal-content" style="max-width: 500px; padding: 15px;"> 
+      <span class="close-button" onclick="closeMemorialModal()">×</span>
+      <img src="image_9eef4e.jpg" alt="In memoria di Giuseppe Acquaviva" style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
+    </div>
+  </div>
+
 </body>  
   
-</html>  
-      
+</html>
