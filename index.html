@@ -1693,7 +1693,37 @@
   
     function closeModal() {  
       document.getElementById("playerModal").style.display = "none";  
-    }  
+    }
+    // Avvia l'audio quando la pagina è pronta
+    window.addEventListener('load', () => {
+      const audio = document.getElementById("auraAudio");
+  
+      // Prova a suonarlo dopo un piccolo ritardo
+      setTimeout(() => {
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            console.log("Autoplay bloccato. L'audio partirà al primo click dell'utente.");
+            // In caso di blocco, avvialo appena l'utente clicca qualcosa
+            const enableAudio = () => {
+              audio.play();
+              document.removeEventListener('click', enableAudio);
+            };
+            document.addEventListener('click', enableAudio);
+          });
+        }
+      }, 300);
+    });
+  
+    // Quando chiudi il modal, ferma l’audio
+    function closeMemorialModal() {
+      document.getElementById("memorialModal").style.display = "none";
+      const audio = document.getElementById("auraAudio");
+      if (!audio.paused) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    }
   </script>  
   
   <div class="modal-overlay" id="playerModal" style="display:none;">  
