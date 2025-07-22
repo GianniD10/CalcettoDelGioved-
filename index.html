@@ -1666,8 +1666,19 @@
   
     // Funzione per chiudere il modal commemorativo
     function closeMemorialModal() {
-      document.getElementById('memorialModal').style.display = 'none';
-    }
+        const modal = document.getElementById('memorialModal');
+        const video = modal.querySelector('video');
+      
+        // Pausa il video e resetta il tempo
+        if (video) {
+          video.pause();
+          video.currentTime = 0;
+        }
+      
+        // Nascondi il modale
+        modal.style.display = 'none';
+      }
+
 
     // Inizializzazione  
     window.onload = function () {  
