@@ -1110,7 +1110,7 @@
         <div class="team-section">  
           <div class="budget-info">  
             <h3>💰 Budget Rimanente</h3>  
-            <div class="budget-display"><span id="remainingBudget">21</span> crediti</div>  
+            <div class="budget-display"><span id="remainingBudget">23</span> crediti</div>  
           </div>  
           <div class="team-list">  
             <h3>🏆 La Tua Squadra <span style="white-space: nowrap;">(<span id="teamCount">0</span>/5)</span></h3>  
@@ -1172,32 +1172,32 @@
     // Dati dei giocatori  
     const players = [  
       // { name: "Dario Fiorentino", cost: 9, ruolo: "Attaccante", caratteristiche: ["Tiro", "Ambidestro", "Tecnica"] },  
-      // { name: "Luigi Pedone", cost: 9, ruolo: "Difensore", caratteristiche: ["Velocità", "Riflessi", "Forza"] },  
-      { name: "Francesco Matarrese", cost: 7.5, ruolo: "Attaccante", caratteristiche: ["Finalizzazione", "Piazzamento", "Controllo"] },  
+      { name: "Luigi Pedone", cost: 8, ruolo: "Difensore", caratteristiche: ["Velocità", "Riflessi", "Forza"] },  
+      { name: "Francesco Matarrese", cost: 8, ruolo: "Attaccante", caratteristiche: ["Finalizzazione", "Piazzamento", "Controllo"] },  
       //{ name: "Gianni Destino", cost: 6.5, ruolo: "Centrocampista", caratteristiche: ["Visione", "Passaggio", "Dribbling"] },  
-      { name: "Giuseppe Acquaviva", cost: 6.5, ruolo: "Attaccante", caratteristiche: ["Dribbling", "Ambidestro", "Tiro"] },    
+      { name: "Giuseppe Acquaviva", cost: 7, ruolo: "Attaccante", caratteristiche: ["Dribbling", "Ambidestro", "Tiro"] },    
       { name: "Mariano Di Nicoli", cost: 5.5, ruolo: "Attaccante", caratteristiche: ["Velocità", "Resilienza", "Contrasto"] },
       // { name: "Jacopo Gambarrota", cost: 5, ruolo: "Attaccante", caratteristiche: ["Posizionamento Attacco"] },
       { name: "Domenico Patruno", cost: 5.5, ruolo: "Centrocampista", caratteristiche: ["Tecnica", "Passaggio", "Tiro"] },  
       // { name: "Michele D'Ambrosio", cost: 3, ruolo: "Difensore", caratteristiche: ["Contrasto", "Lettura difensiva", "Forza"] },  
-      { name: "Simone Palermo", cost: 4, ruolo: "Difensore", caratteristiche: ["Presenza", "Costanza", "Contrasto"] },  
+      { name: "Simone Palermo", cost: 4.5, ruolo: "Difensore", caratteristiche: ["Presenza", "Costanza", "Contrasto"] },  
       { name: "Luca Di Muro", cost: 4, ruolo: "Difensore", caratteristiche: ["Forza", "Colpo di testa", "Contrasto"] },  
-      { name: "Giuseppe Pirelli", cost: 4, ruolo: "Difensore", caratteristiche: ["Forza", "Presenza", "Vecchia scuola"] },  
-      { name: "Vito Sinesi", cost: 3, ruolo: "Difensore", caratteristiche: ["Propensione al tiro", "Contrasto"] },
-      //{ name: "Biagio Barbarossa", cost: 4, ruolo: "Difensore", caratteristiche: ["Forza", "Contrasto", "Affidabilità"] },
+      //{ name: "Giuseppe Pirelli", cost: 4, ruolo: "Difensore", caratteristiche: ["Forza", "Presenza", "Vecchia scuola"] },  
+      //{ name: "Vito Sinesi", cost: 3, ruolo: "Difensore", caratteristiche: ["Propensione al tiro", "Contrasto"] },
+      { name: "Biagio Barbarossa", cost: 4, ruolo: "Difensore", caratteristiche: ["Forza", "Contrasto", "Affidabilità"] },
       //{ name: "Gabriele Del Vento", cost: 3, ruolo: "Portiere", caratteristiche: ["1 vs 1", "Esperienza"] },
       //{ name: "Gabriele Sciannamea", cost: 3, ruolo: "Portiere", caratteristiche: ["Presenza", "Tuffo"] },
-      { name: "Lucabob Del Vento", cost: 3, ruolo: "Difensore", caratteristiche: ["Piazzamento", "Passaggio", "Tiro dalla distanza"] }  
-      //{ name: "Nicola Iacobone", cost: 2.5, ruolo: "Difensore", caratteristiche: ["Pressing alto", "Qualità prezzo"] }, 
+      { name: "Lucabob Del Vento", cost: 3.5, ruolo: "Difensore", caratteristiche: ["Piazzamento", "Passaggio", "Tiro dalla distanza"] },  
+      { name: "Nicola Iacobone", cost: 2.5, ruolo: "Difensore", caratteristiche: ["Pressing alto", "Qualità prezzo"] } 
       //{ name: "Luigi Del Vento", cost: 2, ruolo: "Difensore", caratteristiche: ["Movenze alla Maldini"] }
     ];    
   
     const weeklyTeamRankingData = [
-      { name: "PATRUNO", score: 0.0 },
+      { name: "PATRUNO", score: 8.0 },
       { name: "DI NICOLI", score: 0.0 },
-       { name: "DI MURO", score: 0.0 },
-      { name: "DEL VENTO", score: 0.0 }, 
-      { name: "MATARRESE", score: 0.0 }, 
+       { name: "DI MURO", score: 8.0 },
+      { name: "DEL VENTO", score: 10.5 }, 
+      { name: "MATARRESE", score: 7.5 }, 
       { name: "DESTINO", score: 0.0 }, 
       { name: "BARBAROSSA", score: 0.0 }, 
       { name: "PALERMO", score: 0.0 },
@@ -1208,12 +1208,12 @@
 
     const globalTeamRankingData = [
       { name: "DI NICOLI", score: 93.5 },
-      { name: "MATARRESE", score: 81.5 },
+      { name: "MATARRESE", score: 89.0 },
       { name: "DESTINO", score: 75.5 },
-      { name: "PATRUNO", score: 68.0 },
+      { name: "PATRUNO", score: 76.0 },
       { name: "BARBAROSSA", score: 66.0 },
-      { name: "DI MURO", score: 59.5 },
-      { name: "DEL VENTO", score: 49.0 },
+      { name: "DI MURO", score: 67.5 },
+      { name: "DEL VENTO", score: 59.5 },
       { name: "PALERMO", score: 58.5 },
       { name: "PEDONE", score: 46.0 },
       { name: "ACQUAVIVA", score: 36.5 },
@@ -1261,7 +1261,7 @@ const globalPlayerRankingData = [
   
     // Variabili di stato  
     let selectedPlayers = [];  
-    let remainingBudget = 21;  
+    let remainingBudget = 23;  
   
     // Funzioni di utilità  
     function getInitials(name) {  
@@ -1391,7 +1391,7 @@ const globalPlayerRankingData = [
   
     function resetTeam() {  
       selectedPlayers = [];  
-      remainingBudget = 21;  
+      remainingBudget = 23;  
       updateUI();  
       showNotification('Squadra resettata!');  
     }  
@@ -1525,7 +1525,7 @@ const globalPlayerRankingData = [
           ctx.drawImage(canvas, 0, 0, 400, 600);  
   
           // Usa il nome scelto dall'utente per il file  
-          const fileName = teamName.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '_SETTIMANA11.png';  
+          const fileName = teamName.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '_SETTIMANA12.png';  
   
           // Crea il link per il download  
           const link = document.createElement('a');  
