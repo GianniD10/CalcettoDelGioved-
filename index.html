@@ -1110,7 +1110,7 @@
         <div class="team-section">  
           <div class="budget-info">  
             <h3>💰 Budget Rimanente</h3>  
-            <div class="budget-display"><span id="remainingBudget">23</span> crediti</div>  
+            <div class="budget-display"><span id="remainingBudget">25</span> crediti</div>  
           </div>  
           <div class="team-list">  
             <h3>🏆 La Tua Squadra <span style="white-space: nowrap;">(<span id="teamCount">0</span>/5)</span></h3>  
@@ -1172,10 +1172,12 @@
     // Dati dei giocatori  
     const players = [  
       // { name: "Dario Fiorentino", cost: 9, ruolo: "Attaccante", caratteristiche: ["Tiro", "Ambidestro", "Tecnica"] },  
-      { name: "Luigi Pedone", cost: 8, ruolo: "Difensore", caratteristiche: ["Velocità", "Riflessi", "Forza"] },  
-      { name: "Francesco Matarrese", cost: 8, ruolo: "Attaccante", caratteristiche: ["Finalizzazione", "Piazzamento", "Controllo"] },  
-      //{ name: "Gianni Destino", cost: 6.5, ruolo: "Centrocampista", caratteristiche: ["Visione", "Passaggio", "Dribbling"] },  
-      { name: "Giuseppe Acquaviva", cost: 7, ruolo: "Attaccante", caratteristiche: ["Dribbling", "Ambidestro", "Tiro"] },    
+      //{ name: "Luigi Pedone", cost: 8, ruolo: "Difensore", caratteristiche: ["Velocità", "Riflessi", "Forza"] },  
+      { name: "Francesco Matarrese", cost: 8, ruolo: "Attaccante", caratteristiche: ["Finalizzazione", "Piazzamento", "Controllo"] },
+      { name: "Ludovico Barnabà", cost: 7.5, ruolo: "Attaccante", caratteristiche: ["Dribbling", "Mancino", "Scatto"] },
+      { name: "Giuseppe Acquaviva", cost: 7, ruolo: "Attaccante", caratteristiche: ["Dribbling", "Ambidestro", "Tiro"] },
+      { name: "Gianni Destino", cost: 6.5, ruolo: "Centrocampista", caratteristiche: ["Visione", "Passaggio", "Dribbling"] },
+      { name: "Lorenzo Natale", cost: 6.5, ruolo: "Centrocampista", caratteristiche: ["Velocità", "Forza", "Reattività"] },
       { name: "Mariano Di Nicoli", cost: 5.5, ruolo: "Attaccante", caratteristiche: ["Velocità", "Resilienza", "Contrasto"] },
       // { name: "Jacopo Gambarrota", cost: 5, ruolo: "Attaccante", caratteristiche: ["Posizionamento Attacco"] },
       { name: "Domenico Patruno", cost: 5.5, ruolo: "Centrocampista", caratteristiche: ["Tecnica", "Passaggio", "Tiro"] },  
@@ -1184,11 +1186,11 @@
       { name: "Luca Di Muro", cost: 4, ruolo: "Difensore", caratteristiche: ["Forza", "Colpo di testa", "Contrasto"] },  
       //{ name: "Giuseppe Pirelli", cost: 4, ruolo: "Difensore", caratteristiche: ["Forza", "Presenza", "Vecchia scuola"] },  
       //{ name: "Vito Sinesi", cost: 3, ruolo: "Difensore", caratteristiche: ["Propensione al tiro", "Contrasto"] },
-      { name: "Biagio Barbarossa", cost: 4, ruolo: "Difensore", caratteristiche: ["Forza", "Contrasto", "Affidabilità"] },
+      //{ name: "Biagio Barbarossa", cost: 4, ruolo: "Difensore", caratteristiche: ["Forza", "Contrasto", "Affidabilità"] },
       //{ name: "Gabriele Del Vento", cost: 3, ruolo: "Portiere", caratteristiche: ["1 vs 1", "Esperienza"] },
       //{ name: "Gabriele Sciannamea", cost: 3, ruolo: "Portiere", caratteristiche: ["Presenza", "Tuffo"] },
-      { name: "Lucabob Del Vento", cost: 3.5, ruolo: "Difensore", caratteristiche: ["Piazzamento", "Passaggio", "Tiro dalla distanza"] },  
-      { name: "Nicola Iacobone", cost: 2.5, ruolo: "Difensore", caratteristiche: ["Pressing alto", "Qualità prezzo"] } 
+      { name: "Lucabob Del Vento", cost: 3.5, ruolo: "Difensore", caratteristiche: ["Piazzamento", "Passaggio", "Tiro dalla distanza"] }  
+      // {name: "Nicola Iacobone", cost: 2.5, ruolo: "Difensore", caratteristiche: ["Pressing alto", "Qualità prezzo"] } 
       //{ name: "Luigi Del Vento", cost: 2, ruolo: "Difensore", caratteristiche: ["Movenze alla Maldini"] }
     ];    
   
@@ -1261,7 +1263,7 @@ const globalPlayerRankingData = [
   
     // Variabili di stato  
     let selectedPlayers = [];  
-    let remainingBudget = 23;  
+    let remainingBudget = 25;  
   
     // Funzioni di utilità  
     function getInitials(name) {  
@@ -1391,7 +1393,7 @@ const globalPlayerRankingData = [
   
     function resetTeam() {  
       selectedPlayers = [];  
-      remainingBudget = 23;  
+      remainingBudget = 25;  
       updateUI();  
       showNotification('Squadra resettata!');  
     }  
